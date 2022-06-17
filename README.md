@@ -2,7 +2,7 @@
 
 # Java Enterprise Foundations Project Requirements
 
-![img_4.png](img_4.png)
+![img_4.png](https://github.com/220516-Java-Angular-Enterprise/P2_PokeBid_FrontEnd/blob/main/surprisedpika.png)
 
 ## PokeBid
 PokeBid is an auction website where you have the chance to win otherwise hard to find **Pokemon cards**. A user is capable of both bidding on and selling items. The bidder is presented with a list of ongoing auctions and if one sparks their interest they can pin it for easy access or bid on it. Once they’ve placed their bid and the auction expires the highest bidder wins the item.
