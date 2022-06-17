@@ -1,7 +1,5 @@
 # p2_PokeBid_FrontEnd
 
-# Java Enterprise Foundations Project Requirements
-
 ![img_4.png](https://github.com/220516-Java-Angular-Enterprise/P2_PokeBid_FrontEnd/blob/main/surprisedpika.png)
 
 ## PokeBid
