@@ -10,7 +10,7 @@ import { User } from '../models/users';
 export class UserService {
 
   constructor(private http:HttpClient) { }
-
+ 
   private userURL = "http://localhost:8080/pokebid/users"
   
   getAllUsers(): Promise<User[]>{

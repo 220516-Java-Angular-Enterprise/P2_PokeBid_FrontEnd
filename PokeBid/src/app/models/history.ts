@@ -5,7 +5,7 @@ import { Timestamp } from 'rxjs';
 
 export interface History{
   id: string;
-  time: Timestamp;
+  time: Timestamp<number>;
   status: Status;
   user: User;
   listing: CardListing;
