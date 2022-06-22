@@ -9,6 +9,7 @@ import { NavBarComponent } from './common/header/nav-bar/nav-bar/nav-bar.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardListingsComponent } from './cardListings/card-listings/card-listings.component';
 import { CreateListingComponent } from './cardListings/card-listings/createListing/create-listing/create-listing.component';
+import { PinnedComponent } from './components/dropdown/pinned/pinned.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CreateListingComponent } from './cardListings/card-listings/createListi
     HeaderComponent,
     NavBarComponent,
     CardListingsComponent,
-    CreateListingComponent
+    CreateListingComponent,
+    PinnedComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
