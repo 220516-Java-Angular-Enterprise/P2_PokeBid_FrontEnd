@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@angular-devkit/build-angular": "^14.0.2",
+    "@angular/router": "^14.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.3"
+  }
+}
