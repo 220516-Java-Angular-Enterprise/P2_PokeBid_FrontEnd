@@ -20,14 +20,12 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@auth0/auth0-angular": "^1.10.0",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.3",
-<<<<<<< HEAD
     "jquery": "^3.6.0",
-=======
     "pokemon-tcg-sdk-typescript": "^1.3.4",
     "pokemontcgsdk": "^2.0.0",
->>>>>>> 61eb0d89c97f51278d6d3b94aebf2dc0d49c2a50
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
