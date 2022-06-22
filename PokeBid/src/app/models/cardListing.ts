@@ -13,6 +13,6 @@ export interface CardListing{
   status: Status;
   condition: Conditional;
   card_description: string;
-  time_end: Timestamp;
+  time_end: Timestamp<number>;
 
 }
