@@ -1,0 +1,26 @@
+
+
+
+.bi-star {
+  font-size: 2rem;
+}
+
+
+.card-text{
+  font-weight: bolder;
+}
+
+.time-left{
+  color: brown;
+}
+
+.bi-plus-circle{
+  color: green;
+  font-size: 3rem;
+  padding: 3rem;
+  padding-left: 0;
+}
+
+.bi-plus-circle:hover{
+  color: brown;
+}

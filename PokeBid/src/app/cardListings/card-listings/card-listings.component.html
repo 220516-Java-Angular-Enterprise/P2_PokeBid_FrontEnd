@@ -1,0 +1,36 @@
+<div class="container border d-flex flex-column rounded mt-5">
+  <div class="container d-flex flex-row">
+  <!-- SearchBar -->
+    <div class="input-group m-5">
+      <input type="text" class="form-control rounded" placeholder="Search Card Name" aria-label="Search Card Name"
+        aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+      </div>
+    </div>
+    <button mat-button (click) ='openDialog()'><i class="bi bi-plus-circle"></i></button>
+    </div>
+
+  <!-- Listings -->
+
+  <div class="border text-left rounded d-flex flex-row flex-wrap justify-content-center align-content-center m-3"> 
+    <!-- Card -->
+    <div class="card shadow m-5 align-items-end border-warning" style="width: 20rem;">
+    <i class="bi bi-star position-absolute m-2 mt-1"></i>
+      <img class="card-img-top" src="https://c.tenor.com/ZhKMg4_yCTgAAAAC/surprised-pikachu.gif" alt="card-img">
+      <div class="card-body align-items-start" style="margin: 0">
+        <p class="card-text name">Card Name: </p>
+        <p class="card-text price">Listing Price: </p>
+        <p class="card-text price">Market Price: </p>
+        <p class="card-text price">Condition: </p>
+        <p class="card-text time-left">Time Left: </p>
+    
+        <div class="d-flex align-items-start">
+          <button class="btn btn-success m-3">Bid Now</button>
+          <button class="btn btn-warning m-auto">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
