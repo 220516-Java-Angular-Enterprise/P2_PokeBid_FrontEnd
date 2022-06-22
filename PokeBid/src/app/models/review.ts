@@ -7,7 +7,7 @@ export interface Review {
   listing: CardListing;
   user: User;
   review: string;
-  timestamp: Timestamp;
+  timestamp: Timestamp<number>;
 
 
 }
