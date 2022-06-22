@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  POKEMONTCG_API_KEY: '3f83c220-4b9c-46be-a82e-d0239199c5a2'
 };
 
 /*
