@@ -1,5 +1,4 @@
 import { MaterialModule } from './material/material.module';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +8,8 @@ import { NavBarComponent } from './common/header/nav-bar/nav-bar/nav-bar.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardListingsComponent } from './cardListings/card-listings/card-listings.component';
 import { CreateListingComponent } from './cardListings/card-listings/createListing/create-listing/create-listing.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { CreateListingComponent } from './cardListings/card-listings/createListi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
