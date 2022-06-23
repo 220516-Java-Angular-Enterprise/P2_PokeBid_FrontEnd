@@ -8,9 +8,6 @@
     margin-top: 100px;
     font-family: 'Josefin Sans', sans-serif;
 }
-/* font-family: 
-font-family:
-font-family:  */
 
  .tail{
     width: 60px;
@@ -19,11 +16,10 @@ font-family:  */
 .headerIcon{
     color: #343434;
     font-size: 30px;
-    margin-top: 150px;
-    margin-left: 20px;
     padding: 30px;
-    
+    margin-left: 10px;
 }
+
 .row{
     background-color: #FFFBFF;
 }
@@ -54,3 +50,20 @@ font-family:  */
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+.dropdown-menu{
+    margin-top: 0;
+    background-color:#343434;
+    opacity: 70%;
+    width: 130%;
+    
+}
+nav{
+    margin-top: 150px;
+}
+.halfCircle{
+    display: block;
+}

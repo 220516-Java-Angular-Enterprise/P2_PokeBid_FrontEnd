@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  POKEMONTCG_API_KEY: '3f83c220-4b9c-46be-a82e-d0239199c5a2'
+  POKEMONTCG_API_KEY: '3f83c220-4b9c-46be-a82e-d0239199c5a2',
+  authDomain: 'dev-brpr8-au.us.auth0.com',
+  authClientId: 'Xf98Atwi1t0HMDGtMvgMqgQvUnfj1rIx',
 };
 
 /*

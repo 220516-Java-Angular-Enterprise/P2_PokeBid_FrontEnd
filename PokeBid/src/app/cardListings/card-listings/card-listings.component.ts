@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user.service';
+
 import { CreateListingComponent } from './createListing/create-listing/create-listing.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,8 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CardListingsComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private service: UserService) { }
 
+  // Dialog
   openDialog(){
     let dialogRef = this.dialog.open(CreateListingComponent, {data: {
       name: "Hai"
@@ -19,7 +22,11 @@ export class CardListingsComponent implements OnInit {
       console.log(`Dialog result: ${result}`)
     })
   }
+
+
+  
   ngOnInit(): void {
+
   }
 
 }

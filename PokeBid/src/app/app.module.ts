@@ -1,6 +1,4 @@
 import { MaterialModule } from './material/material.module';
-import {HttpClientModule} from '@angular/common/http'
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardListingsComponent } from './cardListings/card-listings/card-listings.component';
 import { CreateListingComponent } from './cardListings/card-listings/createListing/create-listing/create-listing.component';
 import { PinnedComponent } from './components/dropdown/pinned/pinned.component';
-
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
+import { AuthComponent } from './user/auth/auth.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogActions } from '@angular/material/dialog';
+import { MatFormField } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,10 +24,15 @@ import { PinnedComponent } from './components/dropdown/pinned/pinned.component';
     NavBarComponent,
     CardListingsComponent,
     CreateListingComponent,
-    PinnedComponent
+    PinnedComponent,
+    AuthComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
+    AuthModule.forRoot({
+      domain: environment.authDomain,
+      clientId: environment.authClientId
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
