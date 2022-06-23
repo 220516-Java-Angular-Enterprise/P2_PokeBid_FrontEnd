@@ -22,8 +22,6 @@ export class CardListingsComponent implements OnInit {
       console.log(`Dialog result: ${result}`)
     })
   }
-
-
   
   ngOnInit(): void {
 

@@ -1,0 +1,54 @@
+mat-dialog-content{
+    width: 2000px;
+    height: 3000px;
+
+}
+.mat-form-input, .mat-label, button{
+    height: 30px;
+    font-size: 20px;
+}
+button{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #A43939 !important;
+  }
+  
+  ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #A43939!important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #A43939 !important;
+  }
+.searchField{
+    padding: 10px;
+}
+
+.cards{
+    border: 2px solid black;
+    height: 300px;
+    margin-top: 10px;
+}
+.startingPriceLabel, .conditionLabel, .conditionOption, .textarea{
+    font-size: 20px;
+}
+.startingPriceInput, .conditionLabel{
+    height: 40px;
+}
+textarea {
+    height: 150px;
+}
+.dollarSign, .trailingZeros{
+    font-size: 30px;
+}
+.conditionField{
+    width: 100%;
+}
+.textarea{
+    padding: 30px;
+}

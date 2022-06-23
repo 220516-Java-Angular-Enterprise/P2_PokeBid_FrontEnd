@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     CardListingsComponent,
     CreateListingComponent,
-    AuthComponent
+    AuthComponent,
   ],
   entryComponents: [CreateListingComponent],
   imports: [
