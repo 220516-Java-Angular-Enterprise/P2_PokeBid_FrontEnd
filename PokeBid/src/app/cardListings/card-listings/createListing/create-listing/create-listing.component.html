@@ -1,5 +1,62 @@
 <h2 mat-dialog-title>Create New Card Listing</h2>
-<mat-dialog-content>Hello {{data.name}}!</mat-dialog-content>
+<mat-dialog-content>
+  <div class="searchbar row-2">
+    <!-- Search -->
+    <mat-form-field appearance="standard"> 
+      <mat-label>Pokemon Name</mat-label>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+    <!-- Select Rarity -->
+    <mat-form-field appearance="fill" class="mx-2">
+      <mat-label>Rarity</mat-label>
+      <mat-select>
+        <mat-option value="null">
+          Option
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+      <!-- Select Condition -->
+      <mat-form-field appearance="fill" class="">
+        <mat-label>Condition</mat-label>
+        <mat-select>
+          <mat-option value="null">
+            Option
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+
+  <div class="searchbar row-2">
+    <!-- Search -->
+    <mat-form-field appearance="standard">
+      <mat-label>Starting Price</mat-label>
+      <input matInput placeholder="Starting Price">
+    </mat-form-field>
+    <!-- Select Rarity -->
+    <mat-form-field appearance="fill" class="mx-2">
+      <mat-label>Rarity</mat-label>
+      <mat-select>
+        <mat-option value="null">
+          Option
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Select Condition -->
+    <mat-form-field appearance="fill" class="">
+      <mat-label>Condition</mat-label>
+      <mat-select>
+        <mat-option value="null">
+          Option
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+
+</mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close mat-dialog-close="true">Add Item</button>
   <button mat-button mat-dialog-close mat-dialog-close="false">Cancel</button>
