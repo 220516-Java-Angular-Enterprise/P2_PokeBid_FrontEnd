@@ -25,6 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   entryComponents: [CreateListingComponent],
   imports: [
+    AuthModule.forRoot({
+      domain: environment.authDomain,
+      clientId: environment.authClientId
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
