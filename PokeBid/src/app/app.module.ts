@@ -8,6 +8,9 @@ import { NavBarComponent } from './common/header/nav-bar/nav-bar/nav-bar.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardListingsComponent } from './cardListings/card-listings/card-listings.component';
 import { CreateListingComponent } from './cardListings/card-listings/createListing/create-listing/create-listing.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
+import { AuthComponent } from './user/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
