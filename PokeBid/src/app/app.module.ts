@@ -11,9 +11,6 @@ import { CreateListingComponent } from './cardListings/card-listings/createListi
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { AuthComponent } from './user/auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
@@ -21,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     NavBarComponent,
     CardListingsComponent,
-    CreateListingComponent
+    CreateListingComponent,
+    AuthComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
