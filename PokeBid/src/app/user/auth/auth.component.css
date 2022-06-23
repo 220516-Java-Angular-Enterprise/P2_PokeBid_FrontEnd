@@ -1,0 +1,9 @@
+.btn-dark{
+    font-size: 15px;
+    padding: 15px;
+    color: wheat;
+}
+
+.btn-dark:hover{
+    border: 3px solid black;
+}
