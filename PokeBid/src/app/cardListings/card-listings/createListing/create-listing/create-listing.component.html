@@ -10,8 +10,8 @@
     <mat-form-field appearance="fill" class="mx-2">
       <mat-label>Rarity</mat-label>
       <mat-select>
-        <mat-option value="null">
-          Option
+        <mat-option *ngFor="let rarity of rarities" [value]="rarity">
+          {{rarity}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -52,8 +52,6 @@
       </mat-select>
     </mat-form-field>
   </div>
-
-
 
 
 </mat-dialog-content>
