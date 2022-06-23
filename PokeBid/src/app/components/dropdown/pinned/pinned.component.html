@@ -1,11 +1,9 @@
-<p>pinned works!</p>
-
 <div class="dropdown">
     <button class="dropbtn">Pinned Auctions</button>
     
     <div class="dropdown-content">
-        <p *ngFor="let card of pinnedCards">
-            <a href="#">{{ card.card }} <br> {{ card.card_description }} </a>
+        <p *ngFor="let card of fullPinCards">
+            <a href="#">{{ card.cardListing.card_id }}  <br> {{ card.cardListing.card_description }} <br> {{ card.cardListing.auction_bid | currency }}</a>
         </p>
     </div>
 

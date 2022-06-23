@@ -4,6 +4,8 @@ import { Condition } from 'src/app/models/condition';
 import { listingspoof } from 'src/app/models/listingspoof';
 import { Status } from 'src/app/models/status';
 import { User } from 'src/app/models/users';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
+import { PinnedService } from 'src/app/services/pinned.service';
 
 @Component({
   selector: 'app-pinned',
@@ -12,27 +14,14 @@ import { User } from 'src/app/models/users';
 })
 export class PinnedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pinnedService: PinnedService, private http:HttpClient) { }
 
-  pinnedCards: listingspoof[] = [];
+  
+  fullPinCards: any[] = [];
 
   ngOnInit(): void {
 
-
-
-    var firstArg: string = "first";
-    var secondArg: string = "sec";
-    var pokemanns: string = "pikachu";
-    var descmann: string = "no tears";
-
-
-    var foo: listingspoof = {
-        id: firstArg,
-        card: pokemanns,
-        auction_bid: 10,
-        card_description: descmann
-    }
-    this.pinnedCards.push(foo);
+    this.pinnedService.getPinned().subscribe( (cardlisting) => this.fullPinCards = cardlisting );
   }
 
 }
