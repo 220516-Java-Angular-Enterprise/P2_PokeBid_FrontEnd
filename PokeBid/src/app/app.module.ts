@@ -11,6 +11,10 @@ import { CreateListingComponent } from './cardListings/card-listings/createListi
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { AuthComponent } from './user/auth/auth.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogActions } from '@angular/material/dialog';
+import { MatFormField } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
