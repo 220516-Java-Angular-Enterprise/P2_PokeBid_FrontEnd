@@ -32,7 +32,6 @@ import { AuthComponent } from './user/auth/auth.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
