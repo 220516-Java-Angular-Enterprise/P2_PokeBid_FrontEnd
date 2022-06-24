@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificationComponent } from './common/header/nav-bar/nav-bar/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     CardListingsComponent,
     CreateListingComponent,
+    AuthComponent,
+    NotificationComponent,
     PinnedComponent,
-    AuthComponent
+
   ],
   entryComponents: [CreateListingComponent],
   imports: [
@@ -37,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

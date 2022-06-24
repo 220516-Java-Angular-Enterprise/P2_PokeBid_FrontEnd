@@ -14,45 +14,35 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-
-                        
-                        <!-- I think this was supposed to be a clickable button to go to a pinned page but dropdown wasn't working. -->
-                        <!-- <a routerLink="/pinned" class="nav-item nav-link active"><span class="glyphicon glyphicon-star headerIcon"></span></a> -->
-
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-star headerIcon"></span></a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item"><span><app-pinned></app-pinned></span></a>
-                                </div>
-                            </div>
-                            
-                            
-                        
-                        <!-- I think this was supposed to be a clickable button to go to a pinned page but dropdown wasn't working. -->
-                        <!-- <a routerLink="/notifications" class="nav-item nav-link"><span class="glyphicon glyphicon-bell headerIcon"></span></a> -->
-                        
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bell headerIcon"></span></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item"><span><app-pinned></app-pinned></span></a>
-                            </div>
+                      <div class="nav-item dropdown">
+                        <a routerLink="/pinned" class="nav-item nav-link active"><span class="glyphicon glyphicon-star headerIcon"></span></a>
+                        <!-- Drop down menu -->
+                          <div class="dropdown-menu">
+                            <h3>Pinned comp goes here</h3>
+                          </div>
                         </div>
-
-
+                        <!-- Notifications Icon Drop down -->
+                        <div class="nav-item dropdown">
+                          <a routerLink="/notifications" class="nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="glyphicon glyphicon-bell headerIcon"></span></a>
+                        <!-- Drop down menu -->
+                        <app-notification></app-notification>
+                        </div>
+                        <!-- User Icon Drop Down -->
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user headerIcon"></span></a>
+                            <!-- Drop Down Menu -->
                             <div class="dropdown-menu">
-                                <a class="dropdown-item"><span><app-auth></app-auth></span></a>
+                              <a class="dropdown-item"><span><app-auth></app-auth></span></a>
                             </div>
                         </div>
+                        <!-- Dark Mode Icon -->
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="bi bi-circle-half headerIcon halfCircle"></i></a>
                     </div>
                 </div>
             </nav>
-        </div>
+        </div>>
 
     </div>
 
