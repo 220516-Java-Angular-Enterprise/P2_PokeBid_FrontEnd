@@ -18,16 +18,40 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button type="button" id="button-addon2"><i class="bi bi-search"></i>Search</button>
+          <button type="button" id="button-addon2" class="searchButton"><i class="bi bi-search"></i>Search</button>
     </div>
 
     <!--Card Selection-->
-    <div class="cards"></div>
+    <div class="cards myBlock">
+      <div class="border text-left rounded d-flex flex-row flex-wrap  align-content-center m-3"> 
+        <!-- Card -->
+        
+        <div class="card m-5 align-items-end border-warning btn" style="width: 20rem;">
+          <button type="button" class="btn btn-outline-warning cardButton">
+            <i class="bi bi-star position-absolute m-2 mt-1"></i>
+          <img class="card-img-top" src="https://c.tenor.com/ZhKMg4_yCTgAAAAC/surprised-pikachu.gif" alt="card-img">
+            <div class="card-body align-items-start" style="margin: 0">
+              <p class="card-text name">Card Name: </p>
+              <p class="card-text price">Listing Price: </p>
+              <p class="card-text price">Market Price: </p>
+              <p class="card-text price">Condition: </p>
+              <p class="card-text time-left">Time Left: </p>
+          
+              <div class="d-flex align-items-start">
+                <button class="btn btn-success m-3">Bid Now</button>
+                <button class="btn btn-warning m-auto">Buy Now</button>
+              </div>
+            </div>
+          </button>
+        </div>
+      
+      </div>
+    </div>
 
     <!--Write description-->
     <div class="h-100 d-flex justify-content-center align-items-center">
-        <mat-form-field appearance="outline" class="me-auto flex-fill textarea">
-            <mat-label>Description</mat-label>
+        <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField">
+            <mat-label class="descriptionLabel">Description</mat-label>
             <textarea matInput class="description"></textarea>
         </mat-form-field>
 
@@ -49,17 +73,12 @@
                 </mat-option>
                 </mat-select>
             </mat-form-field>
-           
-            <!--Date Not Working-->
 
-            <!-- <mat-form-field color="accent" appearance="fill">
-        <mat-label>Inherited calendar color</mat-label>
-        <input matInput [matDatepicker]="picker1">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field> -->
-           
+
+            <mat-form-field appearance="standard" class="timeField">
+              <mat-label class="timeLabel">Expiration Time:</mat-label>
+              <input matInput type="time" class="bg-none timeInput" formControlName="_time" placeholder="Expiration Time" value="12:00">
+            </mat-form-field>
         </div>
     </div>
 </div>
