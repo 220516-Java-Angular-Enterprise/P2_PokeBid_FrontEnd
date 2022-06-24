@@ -10,7 +10,7 @@ export class ConditionService {
 
   constructor(private http:HttpClient) { }
 
-  conditionURL  = "http://localhost:8080/pokebid/condition";
+  conditionURL  = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/condition";
   
   getAllConditions(): Promise<Condition[]>{
     return firstValueFrom(this.http.get<Condition[]>(this.conditionURL));

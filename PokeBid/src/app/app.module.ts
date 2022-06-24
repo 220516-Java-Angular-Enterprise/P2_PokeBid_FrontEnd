@@ -41,7 +41,6 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
     MaterialModule,
     HttpClientModule,
 
-
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,20 +20,44 @@ export class CreateListingComponent implements OnInit {
   cardList: ICard[] = [];
   rarities: string[] = [];
 
+
+
   ngOnInit(): void {
+
     this.pokemon.getRarities()
     .subscribe(
       data=>{
         this.rarities = data.data;
       }
     )
-    this.pokemon.getCardsByNameAndRarity("charizard", "Rare Holo")
+  }
+
+  searchName: string = '';
+  searchRarity: any = undefined;
+
+  onKey(event: any){
+    this.searchName = event.target.value;
+  }
+
+  onSelect(value: any): string{
+    this.searchRarity = value
+    console.log(value)
+    return this.searchRarity;
+  }
+
+  searchPokemon(): ICard[] {
+    this.pokemon.getCardsByNameAndRarity(this.searchName, this.searchRarity)
     .subscribe(
       data=>{
-        this.cardList = data.data;
+        this.cardList = data.data
+      console.log(this.searchRarity);
+      console.log(this.searchName);
       }
     )
+    return this.cardList;
   }
+
+  
 
 
   
