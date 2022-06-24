@@ -22,6 +22,7 @@ export interface ICard {
     text: string[];
     types: string[];
     weaknesses: IWeakness[];
+    images: images;
 }
 
 
@@ -47,4 +48,9 @@ export interface IResistance {
 export interface IWeakness {
     type: string;
     value: string;
+}
+
+export interface images {
+  small: string;
+  large: string;
 }

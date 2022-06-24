@@ -1,10 +1,10 @@
-
-
-
-.bi-star {
-  font-size: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+:root{
+  --Space-Cadet: #2F3061;
+  --Yellow-Crayola: #F4D35E;
+  --Jet: #343434;
+  --Sweet-Brown: #A43939;
 }
-
 
 .card-text{
   font-weight: bolder;
@@ -15,12 +15,53 @@
 }
 
 .bi-plus-circle{
-  color: green;
+  color: black;
   font-size: 3rem;
-  padding: 3rem;
-  padding-left: 0;
 }
 
 .bi-plus-circle:hover{
-  color: brown;
+  color: var(--Yellow-Crayola);
+}
+
+.bi-search{
+  font-size: 1.8rem;
+}
+
+.card-search{
+  font-size: 2rem;
+  font-family:'Josefin Sans',
+    sans-serif;;
+}
+
+.add-btn{
+  width: 10px;
+  height: 40px;
+  margin-top: 28.5px;
+  margin-right: 25px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.search-btn{
+  margin-left: 25px;
+}
+
+.bi-star {
+  font-size: 3rem;
+}
+
+.star-btn:hover{
+  color: red;
+  border: none;
+}
+
+.card-text{
+  font-family: 'Josefin Sans',
+    sans-serif;
+}
+
+.card-input{
+  font-family: 'Karla', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
 }

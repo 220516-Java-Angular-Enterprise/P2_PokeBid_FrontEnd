@@ -8,6 +8,7 @@ import { NavBarComponent } from './common/header/nav-bar/nav-bar/nav-bar.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardListingsComponent } from './cardListings/card-listings/card-listings.component';
 import { CreateListingComponent } from './cardListings/card-listings/createListing/create-listing/create-listing.component';
+import { PinnedComponent } from './common/header/nav-bar/nav-bar/pinned/pinned.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { AuthComponent } from './user/auth/auth.component';
@@ -15,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificationComponent } from './common/header/nav-bar/nav-bar/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     CardListingsComponent,
     CreateListingComponent,
     AuthComponent,
+    NotificationComponent,
+    PinnedComponent,
   ],
   entryComponents: [CreateListingComponent],
   imports: [
@@ -36,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
