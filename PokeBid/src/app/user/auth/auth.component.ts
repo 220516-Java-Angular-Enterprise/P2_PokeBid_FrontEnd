@@ -16,7 +16,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe(b => {
-      this.isLoggedIn = b;
+    this.isLoggedIn = b;
     })
   }
 

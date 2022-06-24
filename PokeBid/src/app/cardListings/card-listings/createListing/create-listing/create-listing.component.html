@@ -6,45 +6,29 @@
     <div class="h-100 d-flex justify-content-center align-items-start searchbar row-2 searchName">
         <mat-form-field appearance="standard"class="flex-fill searchField"> 
             <mat-label class="mat-label">Pokemon Name</mat-label>
-            <input type="text" matInput placeholder="Name" class="mat-form-input">
+            <input type="text" matInput placeholder="Pokemon Name" class="mat-form-input" (keyup)="onKey($event)">
         </mat-form-field>
 
         <!--Select rarity-->
           <mat-form-field appearance="fill" class="mx-2 searchField">
             <mat-label class="mat-label rarity">Rarity</mat-label>
-            <mat-select class="mat-form-input">
-              <mat-option *ngFor="let rarity of rarities" [value]="rarity">
+            <mat-select class="mat-form-input" (selectionChange)="onSelect($event.value)">
+                <mat-option  id="option" [value]="rarity"  *ngFor="let rarity of rarities">
                 {{rarity}}
-              </mat-option>
-            </mat-select>
+              </mat-option>    
+      </mat-select>
           </mat-form-field>
-          <button type="button" id="button-addon2" class="searchButton"><i class="bi bi-search"></i>Search</button>
+          <button type="button" id="button-addon2" class="searchButton" (click)="searchPokemon()"><i class="bi bi-search"></i>Search</button>
     </div>
 
     <!--Card Selection-->
-    <div class="cards myBlock">
-      <div class="border text-left rounded d-flex flex-row flex-wrap  align-content-center m-3"> 
+    <div class="cards myBlock rounded">
+      <div class="text-left rounded d-flex flex-row flex-wrap  align-content-center m-3 justify-content-center" > 
         <!-- Card -->
-        
-        <div class="card m-5 align-items-end border-warning btn" style="width: 20rem;">
-          <button type="button" class="btn btn-outline-warning cardButton">
-            <i class="bi bi-star position-absolute m-2 mt-1"></i>
-          <img class="card-img-top" src="https://c.tenor.com/ZhKMg4_yCTgAAAAC/surprised-pikachu.gif" alt="card-img">
-            <div class="card-body align-items-start" style="margin: 0">
-              <p class="card-text name">Card Name: </p>
-              <p class="card-text price">Listing Price: </p>
-              <p class="card-text price">Market Price: </p>
-              <p class="card-text price">Condition: </p>
-              <p class="card-text time-left">Time Left: </p>
-          
-              <div class="d-flex align-items-start">
-                <button class="btn btn-success m-3">Bid Now</button>
-                <button class="btn btn-warning m-auto">Buy Now</button>
-              </div>
-            </div>
+          <button type="button" class="btn btn-outline-warning cardButton h-auto w-auto m-5"  style="width: 30rem; height: 30rem;" *ngFor="let card of cardList">
+            <img class="card-img-top" src={{card.images.small}} alt="card-img">
           </button>
-        </div>
-      
+          <!-- Card End -->
       </div>
     </div>
 

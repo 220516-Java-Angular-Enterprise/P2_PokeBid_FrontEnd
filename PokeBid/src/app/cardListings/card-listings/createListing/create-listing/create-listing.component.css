@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+
+
+* {
+  --Space-Cadet: #2F3061;
+  --Yellow-Crayola: #F4D35E;
+  --Sweet-Brown: #A43939;
+  --Jet: #343434;
+  --Snow: #FFFBFF
+}
+
 mat-dialog-content{
     width: 2000px;
     height: 3000px;
