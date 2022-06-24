@@ -28,7 +28,6 @@ export class CardListingsComponent implements OnInit {
     })
   }
 
-
   cardListings: CardListing[] = [];
   pokemonRendered: ICard[] = [];  
   img: string = "";

@@ -28,7 +28,6 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
     AuthComponent,
     NotificationComponent,
     PinnedComponent,
-
   ],
   entryComponents: [CreateListingComponent],
   imports: [

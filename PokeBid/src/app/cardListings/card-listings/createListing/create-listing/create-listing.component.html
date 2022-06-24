@@ -1,61 +1,91 @@
-<h2 mat-dialog-title>Create New Card Listing</h2>
-<mat-dialog-content>
+<h2 mat-dialog-title class="hc">Create New Card Listing</h2>
+<mat-dialog-content class="container">
+
   <div class="searchbar row-2">
     <!-- Search -->
-    <mat-form-field appearance="standard"> 
-      <mat-label>Pokemon Name</mat-label>
-      <input matInput placeholder="Name">
-    </mat-form-field>
-    <!-- Select Rarity -->
-    <mat-form-field appearance="fill" class="mx-2">
-      <mat-label>Rarity</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let rarity of rarities" [value]="rarity">
-          {{rarity}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-      <!-- Select Condition -->
-      <mat-form-field appearance="fill" class="">
-        <mat-label>Condition</mat-label>
-        <mat-select>
-          <mat-option value="null">
-            Option
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="h-100 d-flex justify-content-center align-items-start searchbar row-2 searchName">
+        <mat-form-field appearance="standard"class="flex-fill searchField"> 
+            <mat-label class="mat-label">Pokemon Name</mat-label>
+            <input type="text" matInput placeholder="Name" class="mat-form-input">
+        </mat-form-field>
+
+        <!--Select rarity-->
+          <mat-form-field appearance="fill" class="mx-2 searchField">
+            <mat-label class="mat-label rarity">Rarity</mat-label>
+            <mat-select class="mat-form-input">
+              <mat-option *ngFor="let rarity of rarities" [value]="rarity">
+                {{rarity}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button type="button" id="button-addon2" class="searchButton"><i class="bi bi-search"></i>Search</button>
+    </div>
+
+    <!--Card Selection-->
+    <div class="cards myBlock">
+      <div class="border text-left rounded d-flex flex-row flex-wrap  align-content-center m-3"> 
+        <!-- Card -->
+        
+        <div class="card m-5 align-items-end border-warning btn" style="width: 20rem;">
+          <button type="button" class="btn btn-outline-warning cardButton">
+            <i class="bi bi-star position-absolute m-2 mt-1"></i>
+          <img class="card-img-top" src="https://c.tenor.com/ZhKMg4_yCTgAAAAC/surprised-pikachu.gif" alt="card-img">
+            <div class="card-body align-items-start" style="margin: 0">
+              <p class="card-text name">Card Name: </p>
+              <p class="card-text price">Listing Price: </p>
+              <p class="card-text price">Market Price: </p>
+              <p class="card-text price">Condition: </p>
+              <p class="card-text time-left">Time Left: </p>
+          
+              <div class="d-flex align-items-start">
+                <button class="btn btn-success m-3">Bid Now</button>
+                <button class="btn btn-warning m-auto">Buy Now</button>
+              </div>
+            </div>
+          </button>
+        </div>
+      
+      </div>
+    </div>
+
+    <!--Write description-->
+    <div class="h-100 d-flex justify-content-center align-items-center">
+        <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField">
+            <mat-label class="descriptionLabel">Description</mat-label>
+            <textarea matInput class="description"></textarea>
+        </mat-form-field>
+
+        <!--Select starting price-->
+        <div class="h-100 d-flex flex-column justify-content-center align-items-center priceConditionDate">
+            <mat-form-field appearance="standard" class="startingPriceField">
+                <span matPrefix class="dollarSign">$&nbsp;</span>
+                <span matSuffix class="trailingZeros">.00</span>
+                <mat-label class="startingPriceLabel">Starting Price</mat-label>
+                <input matInput placeholder="Starting Price" class="startingPriceInput">
+            </mat-form-field>
+
+            <!--Select condition-->
+            <mat-form-field appearance="standard" class="conditionField">
+                <mat-label class="conditionLabel">Condition</mat-label>
+                <mat-select class="conditionOption">
+                <mat-option value="null" >
+                    Option
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="standard" class="timeField">
+              <mat-label class="timeLabel">Expiration Time:</mat-label>
+              <input matInput type="time" class="bg-none timeInput" formControlName="_time" placeholder="Expiration Time" value="12:00">
+            </mat-form-field>
+        </div>
+    </div>
 </div>
 
-
-  <div class="searchbar row-2">
-    <!-- Search -->
-    <mat-form-field appearance="standard">
-      <mat-label>Starting Price</mat-label>
-      <input matInput placeholder="Starting Price">
-    </mat-form-field>
-    <!-- Select Rarity -->
-    <mat-form-field appearance="fill" class="mx-2">
-      <mat-label>Rarity</mat-label>
-      <mat-select>
-        <mat-option value="null">
-          Option
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <!-- Select Condition -->
-    <mat-form-field appearance="fill" class="">
-      <mat-label>Condition</mat-label>
-      <mat-select>
-        <mat-option value="null">
-          Option
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-
+<!--Add or cancel item-->
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions class="container">
   <button mat-button mat-dialog-close mat-dialog-close="true">Add Item</button>
   <button mat-button mat-dialog-close mat-dialog-close="false">Cancel</button>
 </mat-dialog-actions>
