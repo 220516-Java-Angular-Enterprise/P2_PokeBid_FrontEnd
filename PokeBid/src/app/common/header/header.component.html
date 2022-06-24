@@ -16,12 +16,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
+                      <!-- Pinned Icon Drop Down -->
                       <div class="nav-item dropdown">
-                        <a routerLink="/pinned" class="nav-item nav-link active"><span class="glyphicon glyphicon-star headerIcon"></span></a>
+                        <a routerLink="/pinned" class="nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="glyphicon glyphicon-star headerIcon"></span></a>
                         <!-- Drop down menu -->
-                          <div class="dropdown-menu">
-                            <h3>Pinned comp goes here</h3>
-                          </div>
+                            <app-pinned></app-pinned>
                         </div>
                         <!-- Notifications Icon Drop down -->
                         <div class="nav-item dropdown">
@@ -34,11 +33,11 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user headerIcon"></span></a>
                             <!-- Drop Down Menu -->
                             <div class="dropdown-menu">
-                              <a class="dropdown-item"><span><app-auth></app-auth></span></a>
+                              <app-auth></app-auth>
                             </div>
                         </div>
                         <!-- Dark Mode Icon -->
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="bi bi-circle-half headerIcon halfCircle"></i></a>
+                        <!-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="bi bi-circle-half headerIcon halfCircle"></i></a> -->
                     </div>
                 </div>
             </nav>

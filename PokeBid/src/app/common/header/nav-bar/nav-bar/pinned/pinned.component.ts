@@ -1,3 +1,6 @@
+import { ICard } from './../../../../../models/pokemon/pokemon';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pinned } from '../../../../../models/pinned';
 import { Component, OnInit } from '@angular/core';
 import { CardListing } from 'src/app/models/cardListing';
 import { Condition } from 'src/app/models/condition';
@@ -14,14 +17,21 @@ import { PinnedService } from 'src/app/services/pinned.service';
 })
 export class PinnedComponent implements OnInit {
 
-  constructor(private pinnedService: PinnedService, private http:HttpClient) { }
+  constructor(private pinnedService: PinnedService, private http:HttpClient, private pokemon: PokemonService) { }
 
   
-  fullPinCards: any[] = [];
+  fullPinCards: Pinned[] = [];
+
 
   ngOnInit(): void {
 
-    this.pinnedService.getPinned().subscribe( (cardlisting) => this.fullPinCards = cardlisting );
+    this.pinnedService.getPinned().subscribe( (cardlisting) => {this.fullPinCards = cardlisting
+    this.fullPinCards.forEach(pinned => {
+      this.pokemon.getCardById(pinned.cardListing.card_id).subscribe((json) => {
+        pinned.cardListing.card_name = json.data[0].name
+      })
+    })
+    });
   }
 
 }

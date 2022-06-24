@@ -7,3 +7,55 @@
 .btn-dark:hover{
     border: 3px solid black;
 }
+
+* {
+  --Space-Cadet: #2F3061;
+  --Yellow-Crayola: #F4D35E;
+  --Sweet-Brown: #A43939;
+  --Jet: #343434;
+  --Snow: #FFFBFF;
+}
+
+.menu {
+  background-color: #343434;
+}
+
+
+div {
+  font-family: 'Karla', sans-serif;
+
+}
+
+.title {
+  color: #F4D35E;
+  font-family: 'Righteous', cursive;
+}
+
+.title:hover {
+  color: #343434;
+}
+
+.exit {
+  color: #A43939;
+  font-size: 2rem;
+}
+
+.item:hover {
+  color: #343434;
+}
+
+.item-title {
+  color: #F4D35E;
+}
+
+.item-message {
+  color: #FFFBFF;
+}
+
+.dropdown-item:hover {
+  background-color: #2F3061;
+}
+
+.h2{
+  color:#F4D35E;
+}
