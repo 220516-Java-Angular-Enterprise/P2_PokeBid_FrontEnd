@@ -17,6 +17,9 @@ import { MatDialogActions } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationComponent } from './common/header/nav-bar/nav-bar/notification/notification.component';
+import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
+import { LiveAuctionComponent } from './sale/make-sale/live-auction/live-auction.component';
+import { DescriptionComponent } from './sale/make-sale/description/description.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
     AuthComponent,
     NotificationComponent,
     PinnedComponent,
+    MakeSaleComponent,
+    LiveAuctionComponent,
+    DescriptionComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [

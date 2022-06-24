@@ -1,0 +1,68 @@
+.liveContainer{
+    border: 2px solid black;
+    border-radius: 5rem;
+    color: white;
+    margin: 20px;
+    padding: 30px;
+    background-color: #343434;
+    height: 800px;
+    
+}
+.liveIcon{
+    color: red;
+    font-size: 30px;
+    letter-spacing: 5px;
+}
+.currentBidders{
+    background-color: #FFFBFF;
+    padding: 20px;
+    margin-top: 85px;
+}
+.liveAuction{
+    height: 100%;
+}
+.dollar, .headerIcon{
+    color: black;
+    font-size: 30px;
+}
+.currentPrice{
+    text-align: center;
+    font-size: 40px;
+}
+.bidPrice{
+    display: flex;
+    flex-wrap: wrap;
+}
+.price{
+    color: green;
+}
+.bidPrice h3, button{
+    border: 1px solid black;
+    padding: 20px;
+    width: 100%;
+    margin: 10px;
+}
+button{
+    color: black;
+}
+#custom{
+height: 64px;
+font-size: 30px;
+padding: 10px;
+color: black;
+text-align: center;
+margin: 10px;
+}
+
+#bidCustom{
+    color: black;
+    padding: 20px;
+    margin: 10px;
+}
+#placeBid{
+    padding: 40px;
+    background-color: #F4D35E;
+}
+.bidPrice button:focus{
+    border: 7px solid #F4D35E;
+}
