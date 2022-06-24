@@ -185,3 +185,18 @@ mat-dialog-content{
   .bi-plus-circle:hover{
     color: brown;
   }
+
+
+.add{
+  background-color: #F4D35E
+}
+
+.cancel{
+  background-color: #A43939;
+}
+
+.selected-card{
+  font-family: 'Karla',
+    sans-serif;
+  font-size: 3rem;
+}
