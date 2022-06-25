@@ -1,10 +1,14 @@
+import { Condition } from './../../../../models/condition';
+import { ConditionService } from './../../../../services/condition.service';
+import { CardListingService } from './../../../../services/card-listing.service';
+import { CardListingRequest } from 'src/app/models/cardListingRequest';
+
+import { CardListing } from 'src/app/models/cardListing';
 import { ICard } from './../../../../models/pokemon/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-create-listing',
@@ -15,49 +19,119 @@ import { Observable } from 'rxjs';
 
 export class CreateListingComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService) { }
 
-  cardList: ICard[] = [];
-  rarities: string[] = [];
+cardList: ICard[] = [];
+rarities: string[] = [];
+conditions: Condition[] = [];
+selectedCardName: string = '';
+selectedCardId: string = '';
+auction_bid: number = 0;
+condition_id: string = '';
+card_description: string = '';
+selectTime: Date = new Date();
+searchName: string = '';
+searchRarity: any = undefined;
 
+ngOnInit(): void {
 
+  this.pokemon.getRarities()
+  .subscribe(
+    data=>{
+      this.rarities = data.data;
+    }
+  )
 
-  ngOnInit(): void {
+  this.conditionService.getAllConditions().subscribe(
+    data=>{
+      this.conditions = data
+    }
+  )
+}
 
-    this.pokemon.getRarities()
-    .subscribe(
-      data=>{
-        this.rarities = data.data;
-      }
-    )
+onKey(event: any){
+  this.searchName = event.target.value;
+}
+
+onSelect(value: any): string{
+  this.searchRarity = value
+  console.log(value)
+  return this.searchRarity;
+}
+
+searchPokemon(): ICard[] {
+  this.pokemon.getCardsByNameAndRarity(this.searchName, this.searchRarity)
+  .subscribe(
+    data=>{
+      this.cardList = data.data
+    console.log(this.searchRarity);
+    console.log(this.searchName);
+    }
+  )
+  return this.cardList;
+}
+
+selectCard(target: any){
+  this.selectedCardName = target.id
+  this.selectedCardId = target.alt
+}
+
+selectCondition(value: any): string{
+  this.condition_id = value;
+  this.conditions.forEach(condition => {
+    if(condition.condition === this.condition_id){
+      this.condition_id = condition.condition_id 
+    }
+  })
+  console.log(this.condition_id);
+  return this.condition_id;
+}
+
+selectDate(value: any): Date{
+  let currentTime = new Date();
+  console.log(currentTime)
+  if(value == "1"){
+  currentTime.setDate(currentTime.getDate() + 1)
   }
-
-  searchName: string = '';
-  searchRarity: any = undefined;
-
-  onKey(event: any){
-    this.searchName = event.target.value;
+  if(value == "3"){
+  currentTime.setDate(currentTime.getDate() + 3)
   }
-
-  onSelect(value: any): string{
-    this.searchRarity = value
-    console.log(value)
-    return this.searchRarity;
+  if(value == "7"){
+  currentTime.setDate(currentTime.getDate() + 7)
   }
+  console.log(currentTime)
+  this.selectTime = currentTime;
+  return this.selectTime;
+}
 
-  searchPokemon(): ICard[] {
-    this.pokemon.getCardsByNameAndRarity(this.searchName, this.searchRarity)
-    .subscribe(
-      data=>{
-        this.cardList = data.data
-      console.log(this.searchRarity);
-      console.log(this.searchName);
-      }
-    )
-    return this.cardList;
-  }
+onKeyDesc(event: any): string{
+  this.card_description = event.target.value;
+  return this.card_description;
+}
 
+onKeyPrice(event: any): number{
+  this.auction_bid = event.target.value;
+  console.log(this.auction_bid)
+  return this.auction_bid;
+}
+
+addListing(): void{
+let listing: CardListingRequest = {
+  lister_id: "ec40ae5b-12ed-4fb1-8051-199bb2d6533f",
+  card_id: this.selectedCardId,
+  auction_bid: this.auction_bid,
+  status_id: '1e207de7-49d2-4963-8c0d-55095be5bda8',
+  condition_id: this.condition_id,
+  description: this.card_description,
+  endTime: this.selectTime
+};
+
+//Call post request
+this.listingService.postCardListing(listing);
+}
   
+
+
 
 
   

@@ -19,24 +19,28 @@
       </mat-select>
           </mat-form-field>
           <button type="button" id="button-addon2" class="searchButton" (click)="searchPokemon()"><i class="bi bi-search"></i>Search</button>
+        
     </div>
 
     <!--Card Selection-->
     <div class="cards myBlock rounded">
       <div class="text-left rounded d-flex flex-row flex-wrap  align-content-center m-3 justify-content-center" > 
         <!-- Card -->
-          <button type="button" class="btn btn-outline-warning cardButton h-auto w-auto m-5"  style="width: 30rem; height: 30rem;" *ngFor="let card of cardList">
-            <img class="card-img-top" src={{card.images.small}} alt="card-img">
+          <button type="button" class="btn btn-outline-warning cardButton h-auto w-auto m-5"  style="width: 30rem; height: 30rem;" *ngFor="let card of cardList" (click)="selectCard($event.target)">
+            <img class="card-img-top" src={{card.images.small}} alt={{card.id}} id={{card.name}}>
           </button>
           <!-- Card End -->
-      </div>
+        <!-- <button type="button" class="btn btn-outline-warning cardButton h-auto w-auto m-5" style="width: 30rem; height: 30rem;" (click)="selectCard($event.target)">
+            <img class="card-img-top" src="belh" alt="card-img" id="bleh">
+          </button> -->
+        </div>
     </div>
 
     <!--Write description-->
     <div class="h-100 d-flex justify-content-center align-items-center">
         <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField">
             <mat-label class="descriptionLabel">Description</mat-label>
-            <textarea matInput class="description"></textarea>
+            <textarea matInput class="description" (keyup)="onKeyDesc($event)"></textarea>
         </mat-form-field>
 
         <!--Select starting price-->
@@ -45,23 +49,33 @@
                 <span matPrefix class="dollarSign">$&nbsp;</span>
                 <span matSuffix class="trailingZeros">.00</span>
                 <mat-label class="startingPriceLabel">Starting Price</mat-label>
-                <input matInput placeholder="Starting Price" class="startingPriceInput">
+                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyPrice($event)">
             </mat-form-field>
 
             <!--Select condition-->
             <mat-form-field appearance="standard" class="conditionField">
                 <mat-label class="conditionLabel">Condition</mat-label>
-                <mat-select class="conditionOption">
-                <mat-option value="null" >
-                    Option
+                <mat-select class="conditionOption"(selectionChange)="selectCondition($event.value)">
+                <mat-option *ngFor="let condition of conditions" value={{condition.condition}} >
+                    {{condition.condition}}
                 </mat-option>
                 </mat-select>
             </mat-form-field>
 
-
-            <mat-form-field appearance="standard" class="timeField">
-              <mat-label class="timeLabel">Expiration Time:</mat-label>
-              <input matInput type="time" class="bg-none timeInput" formControlName="_time" placeholder="Expiration Time" value="12:00">
+            <!-- Select Expiration Date -->
+            <mat-form-field appearance="standard" class="conditionField">
+              <mat-label class="conditionLabel">Auction Duration</mat-label>
+              <mat-select class="conditionOption" (selectionChange)="selectDate($event.value)">
+                <mat-option value="1" >
+                    <p>1 Day</p>
+                  </mat-option>
+                  <mat-option value="3">
+                    <p>3 Days</p>
+                  </mat-option>
+                  <mat-option value="7">
+                    <p>1 Week</p>
+                  </mat-option>
+              </mat-select>
             </mat-form-field>
         </div>
     </div>
@@ -69,7 +83,18 @@
 
 <!--Add or cancel item-->
 </mat-dialog-content>
-<mat-dialog-actions class="container">
-  <button mat-button mat-dialog-close mat-dialog-close="true">Add Item</button>
-  <button mat-button mat-dialog-close mat-dialog-close="false">Cancel</button>
+<mat-dialog-actions class="container d-flex flex-row w-auto justify-content-between align-content-center">
+  <div class="box">
+    <button mat-button mat-dialog-close mat-dialog-close="true" class="add" (click)="addListing()" >Add Listing</button>
+  </div>
+  <div class="box d-flex justify-content-center mt-2">
+    <h1 class="selected-card">{{selectedCardName}}</h1>
+  </div>
+  <div class="box">
+    <button mat-button mat-dialog-close mat-dialog-close="false" class="cancel">Cancel</button>
+  </div>
+
+
+
+
 </mat-dialog-actions>
