@@ -29,7 +29,7 @@ selectedCardId: string = '';
 auction_bid: number = 0;
 condition_id: string = '';
 card_description: string = '';
-selectTime: any; 
+selectTime: Date = new Date();
 searchName: string = '';
 searchRarity: any = undefined;
 
@@ -87,6 +87,23 @@ selectCondition(value: any): string{
   return this.condition_id;
 }
 
+selectDate(value: any): Date{
+  let currentTime = new Date();
+  console.log(currentTime)
+  if(value == "1"){
+  currentTime.setDate(currentTime.getDate() + 1)
+  }
+  if(value == "3"){
+  currentTime.setDate(currentTime.getDate() + 3)
+  }
+  if(value == "7"){
+  currentTime.setDate(currentTime.getDate() + 7)
+  }
+  console.log(currentTime)
+  this.selectTime = currentTime;
+  return this.selectTime;
+}
+
 onKeyDesc(event: any): string{
   this.card_description = event.target.value;
   return this.card_description;
@@ -109,12 +126,11 @@ let listing: CardListingRequest = {
   endTime: this.selectTime
 };
 
-console.log(listing);
 //Call post request
 this.listingService.postCardListing(listing);
-console.log("Successfully added to listings.")
 }
   
+
 
 
 

@@ -62,11 +62,21 @@
                 </mat-select>
             </mat-form-field>
 
-
-            <!-- <mat-form-field appearance="standard" class="timeField">
-              <mat-label class="timeLabel">Expiration Time:</mat-label>
-              <input matInput type="time" class="bg-none timeInput" formControlName="_time" placeholder="Expiration Time" value="12:00">
-            </mat-form-field> -->
+            <!-- Select Expiration Date -->
+            <mat-form-field appearance="standard" class="conditionField">
+              <mat-label class="conditionLabel">Auction Duration</mat-label>
+              <mat-select class="conditionOption" (selectionChange)="selectDate($event.value)">
+                <mat-option value="1" >
+                    <p>1 Day</p>
+                  </mat-option>
+                  <mat-option value="3">
+                    <p>3 Days</p>
+                  </mat-option>
+                  <mat-option value="7">
+                    <p>1 Week</p>
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
         </div>
     </div>
 </div>

@@ -7,5 +7,5 @@ export interface CardListingRequest{
   status_id: string;
   condition_id: string;
   description: string;
-  endTime: Timestamp<Number>;
+  endTime: Date;
 }
