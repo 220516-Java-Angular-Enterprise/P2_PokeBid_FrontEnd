@@ -38,7 +38,21 @@
       //Change background color on click
       function chBackcolor(color) {
         document.body.style.background = color;
-}
+    }
+
+      //Update bid button based on user input
+      function changeBidPrice(clickedId){
+        if(clickedId == "bidTen"){
+          document.getElementById("placeBid").innerText = 'Place Bid For: $10';
+        }else if(clickedId == "bidTwenty"){
+          document.getElementById("placeBid").innerText = 'Place Bid For: $20';
+        }else if(clickedId == "bidThirty"){
+          document.getElementById("placeBid").innerText = 'Place Bid For: $30';
+        }else if(clickedId == "bidCustom"){
+          document.getElementById("placeBid").innerText = 'Place Bid For: $' + document.getElementById("custom").value;
+        }
+        
+      }
       </script>
 
 </body>

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+
+.sale{
+    border: 2px solid black;
+    border-radius: 5rem;
+    color: white;
+    margin: 20px;
+    padding: 30px;
+    background-color: #343434;
+}
+.img, .descriptionContainer{
+    background-color: #343434;
+}
+
+.name{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.description{
+    font-size: 30px;
+    font-family:'Josefin Sans',
+    sans-serif;
+    padding: 30px;
+    line-height: 30px;
+}
+
+.condition{
+    font-size: 20px;
+    float: right;
+    padding: 30px;
+}
+
+.liveChat{
+    background-color: #A43939;
+    border-radius: 5rem;
+    padding: 30px;
+}

@@ -6,7 +6,7 @@ import { CardListing } from 'src/app/models/cardListing';
 import { Condition } from 'src/app/models/condition';
 import { listingspoof } from 'src/app/models/listingspoof';
 import { Status } from 'src/app/models/status';
-import { User } from 'src/app/models/users';
+import { User } from '@auth0/auth0-angular';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { PinnedService } from 'src/app/services/pinned.service';
 
@@ -35,6 +35,5 @@ export class PinnedComponent implements OnInit {
   }
 
 }
-
 
 
