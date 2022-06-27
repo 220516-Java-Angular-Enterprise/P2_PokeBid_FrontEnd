@@ -1,4 +1,5 @@
-import { CardListingRequest } from '../models/cardListingRequest';
+import { BidRequest } from './../models/dtos/bidRequerst';
+import { CardListingRequest } from '../models/dtos/cardListingRequest';
 import { CardListing } from './../models/cardListing';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,22 +17,19 @@ export class CardListingService {
 
   
   getAllCardListings(): Observable<any>{
-    return this.http.get(this.cardListingURL);
+    //Active Status 
+    return this.http.get(this.cardListingURL + '/' + 'status/' + '1e207de7-49d2-4963-8c0d-55095be5bda8');
   }
 
   postCardListing(listing: CardListingRequest){
     return firstValueFrom(this.http.post<any>(this.cardListingURL, listing))
-
   }
 
+  getCardListingById(id: string): Observable<any>{
+    return this.http.get(this.cardListingURL + '/' + id);
+  }
 
-// {
-//       lister_id: listing.lister_id,
-//       card_id: listing.card_id,
-//       auction_bid: listing.auction_bid,
-//       condition_id: listing.condition_id,
-//       status_id: listing.status_id,
-//       description: listing.description,
-//       endTime: listing.endTime
-// }
-    }
+  updateHighestBidder(request: BidRequest){
+    return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateBidder", request))
+  }
+}

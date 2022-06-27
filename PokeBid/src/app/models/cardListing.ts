@@ -5,16 +5,16 @@ import { Timestamp } from 'rxjs';
 
 
 export interface CardListing{
-  id: string;
-  user: User;
+  id?: string;
+  user?: User;
   auction_bidder: User;
   card_id: string;
-  auction_bid: number;
-  status: Status;
+  auction_bid?: number;
+  status?: Status;
   condition: Condition;
-  card_description: string;
-  time_end: Timestamp<number>;
-  imgUrl: string;
-  card_name: string;
+  card_description?: string;
+  time_end?: Timestamp<number>;
+  imgUrl?: string;
+  card_name?: string;
 
 }

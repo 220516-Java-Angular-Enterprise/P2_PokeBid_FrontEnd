@@ -1,7 +1,7 @@
 import { Condition } from './../../../../models/condition';
 import { ConditionService } from './../../../../services/condition.service';
 import { CardListingService } from './../../../../services/card-listing.service';
-import { CardListingRequest } from 'src/app/models/cardListingRequest';
+import { CardListingRequest } from 'src/app/models/dtos/cardListingRequest';
 
 import { CardListing } from 'src/app/models/cardListing';
 import { ICard } from './../../../../models/pokemon/pokemon';
@@ -64,8 +64,6 @@ searchPokemon(): ICard[] {
   .subscribe(
     data=>{
       this.cardList = data.data
-    console.log(this.searchRarity);
-    console.log(this.searchName);
     }
   )
   return this.cardList;
@@ -126,6 +124,8 @@ let listing: CardListingRequest = {
   endTime: this.selectTime
 };
 
+
+console.log(listing);
 //Call post request
 this.listingService.postCardListing(listing);
 }
