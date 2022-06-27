@@ -4,10 +4,16 @@
   --Yellow-Crayola: #F4D35E;
   --Jet: #343434;
   --Sweet-Brown: #A43939;
+  --Snow: #FFFBFF
 }
 
 .card-text{
   font-weight: bolder;
+  color: snow
+}
+
+.card{
+  background-color: #2F3061;
 }
 
 .time-left{
@@ -46,8 +52,10 @@
   margin-left: 25px;
 }
 
+
 .bi-star {
   font-size: 3rem;
+  color: black;
 }
 
 .star-btn:hover{
@@ -64,4 +72,12 @@
   font-family: 'Karla', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
+  color: snow;
+}
+
+.saleButton{
+  color: snow;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  
 }

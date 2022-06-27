@@ -20,7 +20,6 @@ export class CardListingsComponent implements OnInit {
   // Dialog
   openDialog(){
     let dialogRef = this.dialog.open(CreateListingComponent, {data: {
-
     }})
 
     dialogRef.afterClosed().subscribe(result => {
@@ -29,30 +28,46 @@ export class CardListingsComponent implements OnInit {
   }
 
   cardListings: CardListing[] = [];
+  filteredListings: CardListing[] = [];
   pokemonRendered: ICard[] = [];  
   img: string = "";
+  searchName: string = '';
 
-  ngOnInit(): void {
-
-    this.service.getAllCardListings().subscribe((data:any) =>{
-      this.cardListings = data;
-      
-      this.cardListings.forEach(listing => {
-        this.pokemon.getCardById(listing.card_id).subscribe(data => {
-          listing.imgUrl = data.data[0].images.small
-          listing.card_name = data.data[0].name
-        })
+  async ngOnInit(){
+  await this.service.getAllCardListings().toPromise().then((data:any) =>{
+    this.cardListings = data;
+    
+    this.cardListings.forEach(listing => {
+      this.pokemon.getCardById(listing.card_id).subscribe(data => {
+        listing.imgUrl = data.data[0].images.small
+        listing.card_name = data.data[0].name
       })
     })
-    
-    
-
-    this.pokemon.getCardById("pl3-1").subscribe((data:any) =>{
-      this.img = data.data[0].images.small;
+  })
+  console.log(this.cardListings)
+  }
+  
+  onKeySearch(event: any){
+    this.filteredListings = [];
+    this.searchName = event.target.value.toLowerCase();
+    this.cardListings.forEach(listing => {
+    if(listing.card_name?.toLowerCase().includes(this.searchName) && !this.filteredListings.includes(listing)){
+    this.filteredListings.push(listing);
+      }
     })
 
+  }
+  
 
-    }
+  filterSearch(){
+    this.filteredListings = [];
+    this.cardListings.forEach(listing => {
+    if(listing.card_name?.toLowerCase().includes(this.searchName) && !this.filteredListings.includes(listing)){
+    this.filteredListings.push(listing);
+      }
+    })
+  }
+
   
 
 }
