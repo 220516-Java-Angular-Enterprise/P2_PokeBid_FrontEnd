@@ -28,9 +28,9 @@ export class PokemonService {
 
   getCardsByNameAndRarity(name: string, rarity?: string): Observable<any>{
       if(rarity === undefined){
-        return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}`, {'headers': this.header})
+        return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}*`, {'headers': this.header})
       } 
-    return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name} rarity:${this.determineRarity(rarity)}`, {'headers': this.header})
+    return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}* rarity:${this.determineRarity(rarity)}`, {'headers': this.header})
   }
 
   getCardById(id: string): Observable<any>{

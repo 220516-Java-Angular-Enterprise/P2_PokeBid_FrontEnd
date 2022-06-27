@@ -13,7 +13,7 @@ export interface CardListing{
   status?: Status;
   condition: Condition;
   card_description?: string;
-  time_end?: Timestamp<number>;
+  time_end?: Date;
   imgUrl?: string;
   card_name?: string;
 
