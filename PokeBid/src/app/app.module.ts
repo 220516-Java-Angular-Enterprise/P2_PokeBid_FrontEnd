@@ -23,7 +23,6 @@ import { DescriptionComponent } from './sale/make-sale/description/description.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './user/create-account/create-account.component';
 import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
-import { RedirectComponent } from './user/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { RedirectComponent } from './user/redirect/redirect.component';
     DescriptionComponent,
     CreateAccountComponent,
     ConfirmUserComponent,
-    RedirectComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
