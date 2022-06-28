@@ -20,6 +20,7 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
 import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
 import { LiveAuctionComponent } from './sale/make-sale/live-auction/live-auction.component';
 import { DescriptionComponent } from './sale/make-sale/description/description.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,8 @@ import { DescriptionComponent } from './sale/make-sale/description/description.c
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

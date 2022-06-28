@@ -52,10 +52,22 @@
 
         <!--Live chat container-->
 
-        <div class="col-sm-4 liveChat">Live Chat</div>
+        <div class="col-sm-4 liveChat overflow-auto" style="height: 750px;">Live Chat
+          <div style="overflow-y: scroll; height:80%;" >
+        <div *ngFor="let msg of greetings" class="overflow-auto">
+          <div class="container">
+                  <p>{{msg}}</p>
+          </div>
+        </div> </div>
+        <form #loginForm=ngForm style="bottom:5%; position:absolute;">
+          <div>
+              <br>
+              <textarea style="color: black;" cols="75" autocomplete="off" placeholder="Type Your Message..." name="newmessage" [(ngModel)]="newmessage" required></textarea>
+              <button style="position: static;" class="btn btn-primary" (click)="sendMessage()" [disabled]="!loginForm.valid">Send</button>
+          </div>
+        </form>
+      </div>
     </div>
     
 </div>
 <app-live-auction></app-live-auction>
-
-

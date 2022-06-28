@@ -33,7 +33,7 @@ export class LiveAuctionComponent implements OnInit {
 
 
   async ngOnInit() {
-    await this.listingService.getCardListingById('5ebecd0c-2f8d-40da-88f2-27cabc11868d').toPromise().then((data: any) =>{
+    await this.listingService.getCardListingById('c899812c-0990-48c7-807d-32fa05c55310').toPromise().then((data: any) =>{
       this.currentListing = data;
       console.log(this.currentListing);
     })
