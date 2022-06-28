@@ -25,6 +25,13 @@ import { CreateAccountComponent } from './user/create-account/create-account.com
 import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
 import { RedirectComponent } from './user/redirect/redirect.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  //{path: '', component: TaskComponent}
+
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +61,8 @@ import { RedirectComponent } from './user/redirect/redirect.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
 
   ],
   providers: [],
