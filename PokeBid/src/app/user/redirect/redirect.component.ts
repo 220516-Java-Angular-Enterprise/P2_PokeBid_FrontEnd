@@ -25,8 +25,12 @@ export class RedirectComponent implements OnInit {
       console.log(data)
       if(data == null){
         this.goToCreateAccount(this.id);
+        console.log(`data is null`)
+        console.log(data)
       } else {
         this.router.navigateByUrl('');
+        console.log('data is not null')
+        console.log(data)
       }
     })
 
