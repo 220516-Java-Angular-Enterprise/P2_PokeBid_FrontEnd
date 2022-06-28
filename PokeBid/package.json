@@ -20,7 +20,7 @@
     "@angular/material": "^14.0.3",
     "@angular/platform-browser": "^14.0.3",
     "@angular/platform-browser-dynamic": "^14.0.0",
-    "@angular/router": "^14.0.0",
+    "@angular/router": "^14.0.3",
     "@auth0/auth0-angular": "^1.10.0",
     "angular-bootstrap": "^0.12.2",
     "angular-material": "^1.2.5",
