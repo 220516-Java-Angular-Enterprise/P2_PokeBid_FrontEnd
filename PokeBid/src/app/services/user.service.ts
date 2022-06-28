@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
-import {firstValueFrom} from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { User } from '../models/users';
 
 
@@ -14,15 +14,16 @@ export class UserService {
  
   private userURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users"
   
-  getAllUsers(): Promise<User[]>{
-    return firstValueFrom(this.http.get<User[]>(this.userURL));
+  getAllUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.userURL);
   }
 
   getUserById(id: string): Promise<User>{
     return firstValueFrom(this.http.get<User>(this.userURL + "/" + id));
   }
 
-  getTest(): Promise<any[]>{
-      return firstValueFrom(this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos/1'));
+  getUsersByEmail(email?: string): Observable<User>{
+    return this.http.get<User>(this.userURL + '/get-by-email/' + email)
   }
+
 }

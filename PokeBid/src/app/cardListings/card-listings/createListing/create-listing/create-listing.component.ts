@@ -9,6 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-create-listing',
@@ -19,7 +20,7 @@ import { Observable } from 'rxjs';
 
 export class CreateListingComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService, private auth: AuthService) { }
 
 cardList: ICard[] = [];
 rarities: string[] = [];
@@ -32,8 +33,9 @@ card_description: string = '';
 selectTime: Date = new Date();
 searchName: string = '';
 searchRarity: any = undefined;
+isLoggedIn = false;
 
-ngOnInit(): void {
+async ngOnInit() {
 
   this.pokemon.getRarities()
   .subscribe(
@@ -47,6 +49,11 @@ ngOnInit(): void {
       this.conditions = data
     }
   )
+
+  await this.auth.isAuthenticated$.subscribe(data =>{
+    this.isLoggedIn = data;
+  })
+  console.log(this.isLoggedIn);
 }
 
 onKey(event: any){

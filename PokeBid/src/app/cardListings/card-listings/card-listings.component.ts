@@ -1,3 +1,4 @@
+import { ConfirmUserComponent } from './../../user/confirm-user/confirm-user.component';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { ICard } from './../../models/pokemon/pokemon';
 import { CardListingService } from './../../services/card-listing.service';
@@ -6,6 +7,7 @@ import { Router } from '@angular/router';
 import { CreateListingComponent } from './createListing/create-listing/create-listing.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-card-listings',
@@ -14,29 +16,33 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CardListingsComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private service: CardListingService, private pokemon: PokemonService, private router: Router) { }
+  constructor(private dialog: MatDialog, private service: CardListingService, private pokemon: PokemonService, private router: Router, private auth: AuthService) { }
 
 
   // Dialog
-  openDialog(){
+  openCreateListingDialog(){
+    if(this.isLoggedIn){
     let dialogRef = this.dialog.open(CreateListingComponent, {data: {
     }})
+    } else this.openConfirmUser();
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
   }
+  
+  openConfirmUser(){
+    let dialogRef = this.dialog.open(ConfirmUserComponent)
+  }
+  
 
   cardListings: CardListing[] = [];
   filteredListings: CardListing[] = [];
   pokemonRendered: ICard[] = [];  
   img: string = "";
   searchName: string = '';
+  isLoggedIn: boolean = false;
 
   async ngOnInit(){
   await this.service.getAllCardListings().toPromise().then((data:any) =>{
     this.cardListings = data;
-    
     this.cardListings.forEach(listing => {
       this.pokemon.getCardById(listing.card_id).subscribe(data => {
         listing.imgUrl = data.data[0].images.small
@@ -44,7 +50,9 @@ export class CardListingsComponent implements OnInit {
       })
     })
   })
-  console.log(this.cardListings)
+  await this.auth.isAuthenticated$.subscribe(data=>{
+    this.isLoggedIn = data;
+  })
   }
   
   onKeySearch(event: any){
@@ -69,8 +77,13 @@ export class CardListingsComponent implements OnInit {
   }
 
   goToListing(id: any){
+    if(this.isLoggedIn){
     this.router.navigateByUrl(`make-sale/${id}`)
     console.log(id);
+    } else {
+      this.openConfirmUser();
+    }
+
   }
 
   

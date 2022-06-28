@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,16 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'PokeBid';
+  isLoggedIn = false;
 
-  constructor(){
+  constructor(private auth: AuthService){
   
   }
 
+  async ngOnInit(){
+  await this.auth.isAuthenticated$.subscribe(data => {
+    this.isLoggedIn = data;
+  })
+  }
 
 }
