@@ -1,7 +1,7 @@
 import { ICard } from './../models/pokemon/pokemon';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -10,6 +10,8 @@ import { HttpParams } from '@angular/common/http';
 export class PokemonService {
 
   constructor(private http:HttpClient,) { }
+
+  header = new HttpHeaders().set("x-api-key", "3f83c220-4b9c-46be-a82e-d0239199c5a2");
   
 
   rootURL:string  = "https://api.pokemontcg.io/v2/cards";
@@ -21,15 +23,18 @@ export class PokemonService {
   }
 
   getRarities(): Observable<any>{
-    return this.http.get('https://api.pokemontcg.io/v2/rarities')
+    return this.http.get('https://api.pokemontcg.io/v2/rarities', {'headers': this.header})
   }
 
   getCardsByNameAndRarity(name: string, rarity?: string): Observable<any>{
       if(rarity === undefined){
-        return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}`)
+        return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}*`, {'headers': this.header})
       } 
-      
-      return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name} rarity:${this.determineRarity(rarity)}`)
+    return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}* rarity:${this.determineRarity(rarity)}`, {'headers': this.header})
+  }
+
+  getCardById(id: string): Observable<any>{
+    return this.http.get(`https://api.pokemontcg.io/v2/cards?q=id:${id}`, {'headers': this.header});
   }
   
 private determineRarity(rarity:string): string{
@@ -63,6 +68,9 @@ private determineRarity(rarity:string): string{
     break;
     case "Rare Holo V":
     rarity = "v";
+    break;
+    case "Rare ACE":
+    rarity = "ace";
     break;
   case "Rare Holo VMAX":
     rarity = "vmax";

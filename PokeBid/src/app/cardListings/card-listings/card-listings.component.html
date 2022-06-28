@@ -1,35 +1,68 @@
-<div class="container border d-flex flex-column rounded mt-5">
+
+<div class="container border d-flex flex-column rounded mt-5" style="background:#343434;">
+
   <div class="container d-flex flex-row">
   <!-- SearchBar -->
     <div class="input-group m-5">
-      <input type="text" class="form-control rounded" placeholder="Search Card Name" aria-label="Search Card Name"
-        aria-describedby="button-addon2">
+      <input type="text" class="form-control card-search rounded" placeholder="Search Card Name" aria-label="card-name"
+        aria-describedby="button-addon2" (keyup)="onKeySearch($event)">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+        <button (click)="filterSearch()" class="btn btn-warning search-btn" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
       </div>
     </div>
-    <button mat-button (click) ='openDialog()'><i class="bi bi-plus-circle"></i></button>
+    <button mat-button class="add-btn btn btn-success search-btn" (click)='openDialog()'><i class="bi bi-plus-circle"></i></button>
     </div>
-  <!-- Listings -->
 
-  <div class="border text-left rounded d-flex flex-row flex-wrap justify-content-center align-content-center m-3"> 
+  <!-- Listings -->
+  <div class="border m-5 d-flex justify-content-center row" *ngIf="searchName===''"> 
     <!-- Card -->
-    <div class="card shadow m-5 align-items-end border-warning" style="width: 20rem;">
-    <i class="bi bi-star position-absolute m-2 mt-1"></i>
-      <img class="card-img-top" src="https://c.tenor.com/ZhKMg4_yCTgAAAAC/surprised-pikachu.gif" alt="card-img">
-      <div class="card-body align-items-start" style="margin: 0">
-        <p class="card-text name">Card Name: </p>
-        <p class="card-text price">Listing Price: </p>
-        <p class="card-text price">Market Price: </p>
-        <p class="card-text price">Condition: </p>
-        <p class="card-text time-left">Time Left: </p>
-    
-        <div class="d-flex align-items-start">
-          <button class="btn btn-success m-3">Bid Now</button>
-          <button class="btn btn-warning m-auto">Buy Now</button>
+    <div class="card shadow m-5 overflow-hidden" *ngFor="let listing of cardListings" style="width: 25rem;">
+    <button class="position-absolute star-btn btn align-self-end"><i class="bi bi-star"></i></button>
+      <img class="card-img-top mt-2" [src]="listing.imgUrl" alt="card-img">
+      <div class="card-body" style="margin: 0">
+        <div class="d-inline-flex"><p class="card-text name me-4">Card Name:</p><p class="card-input">{{listing.card_name}}</p> </div>
+        <div class="d-inline-flex"><p class="card-text price me-4">Listing Price:</p><p class="card-input">{{listing.auction_bid | currency}}</p> </div>
+        <div class="d-inline-flex"><p class="card-text price me-4">Condition:</p><p class="card-input">{{listing.condition.condition}}</p> </div>
+        <div class="d-inline-flex"><p class="card-text time-left me-4">Time Left:</p> <p class="card-input">{{listing.time_end}}</p></div>
         </div>
+        <div class="d-flex justify-content-center">
+          <!--Routes to sale page-->
+          <button class="btn btn-success mb-2" style="font-size: 1.5rem;"><a class="btn saleButton" (click)="goToListing(listing.id)">Bid Now</a></button>
+        </div>
+    </div>
+  </div>
+  <!-- Filtered Listings -->
+  <div class="border m-5 d-flex justify-content-center row" *ngIf="searchName"> 
+    <!-- Card -->
+    <div class="card shadow m-5 overflow-hidden" *ngFor="let listing of filteredListings" style="width: 25rem;">
+      <button class="position-absolute star-btn btn align-self-end"><i class="bi bi-star"></i></button>
+      <img class="card-img-top mt-2" [src]="listing.imgUrl" alt="card-img">
+      <div class="card-body" style="margin: 0">
+        <div class="d-inline-flex">
+          <p class="card-text name me-4">Card Name:</p>
+          <p class="card-input">{{listing.card_name}}</p>
+        </div>
+        <div class="d-inline-flex">
+          <p class="card-text price me-4">Listing Price:</p>
+          <p class="card-input">{{listing.auction_bid | currency}}</p>
+        </div>
+        <div class="d-inline-flex">
+          <p class="card-text price me-4">Condition:</p>
+          <p class="card-input">{{listing.condition.condition}}</p>
+        </div>
+        <div class="d-inline-flex">
+          <p class="card-text time-left me-4">Time Left:</p>
+          <p class="card-input">{{listing.time_end}}</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <!--Routes to sale page-->
+        <button class="btn btn-success mb-2" style="font-size: 1.5rem;"><a class="btn saleButton"
+          (click)="goToListing(listing.id)">Bid Now</a></button>
       </div>
     </div>
   </div>
+
+
 </div>
 

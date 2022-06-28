@@ -1,7 +1,7 @@
 
 
 export interface Condition{
-  id: string;
+  condition_id: string;
   condition: string;
 
 }

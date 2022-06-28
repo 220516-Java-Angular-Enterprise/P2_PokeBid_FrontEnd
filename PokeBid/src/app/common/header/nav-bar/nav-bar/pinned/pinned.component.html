@@ -1,0 +1,32 @@
+<ul class="dropdown-menu dropdown-menu-end menu">
+  <li class="dropdown-item disabled">
+    <div class="d-inline-flex" style="margin-left: 200px;">
+      <h2 class="fill title">Pinned Items</h2>
+    </div>
+    <div class="d-inline-flex" style="margin-left: 200px; ">
+      <button type="button" class="btn exit">X</button>
+    </div>
+  </li>
+
+  <li class="dropdown-item item" *ngFor="let pinned of fullPinCards">
+    <!-- Notification Template -->
+    <div class="d-flex justify-content-between">
+      <!-- Left -->
+
+      <!-- Middle -->
+      <div class="d-inline-flex flex-fill row">
+        <div class="d-flex justify-content-center">
+          <p class="h2 item-title">{{pinned.cardListing.card_name}}</p>
+        </div>
+        <div class="d-flex mb-2 item-message justify-content-between">
+          <div class="box d-flex flex-column align-items-center"><p class="h3 current-bid">Current Bid:</p><p class="h3">{{pinned.cardListing.auction_bid | currency}}</p></div>
+          <div class="box d-flex flex-column align-items-center"><p class="h3 time-left">Auction Ends:</p><p class="h3">{{pinned.cardListing.time_end}}</p></div>
+        </div>
+      </div>
+      <!-- Close Button -->
+      <div class="d-inline-flex">
+        <button type="button" class="btn btn-danger" style="margin-left:7px;">X</button>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -22,6 +22,9 @@ export interface ICard {
     text: string[];
     types: string[];
     weaknesses: IWeakness[];
+    images: images;
+    cardmarket: CardMarket;
+    flavoredText: string;
 }
 
 
@@ -47,4 +50,14 @@ export interface IResistance {
 export interface IWeakness {
     type: string;
     value: string;
+}
+
+export interface images {
+  small: string;
+  large: string;
+}
+
+export interface CardMarket{
+  url: string;
+  updatedAt: string;
 }

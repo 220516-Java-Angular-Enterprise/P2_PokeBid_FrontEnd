@@ -8,6 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class HeaderComponent implements OnInit {
 
+  
   constructor(private auth: AuthService) { }
 
   user: any = {}
@@ -18,5 +19,4 @@ export class HeaderComponent implements OnInit {
     })
 
   }
-  
 }

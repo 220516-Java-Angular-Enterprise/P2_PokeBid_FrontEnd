@@ -1,7 +1,9 @@
+import { BidRequest } from './../models/dtos/bidRequerst';
+import { CardListingRequest } from '../models/dtos/cardListingRequest';
 import { CardListing } from './../models/cardListing';
 import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http';
-import {firstValueFrom} from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +12,24 @@ export class CardListingService {
 
   constructor(private http:HttpClient) { }
 
-  cardListingURL  = "http://localhost:8080/pokebid/";
+  private cardListingURL  = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/cardListing";
   
-  getAllCardListings(): Promise<CardListing[]>{
-    return firstValueFrom(this.http.get<CardListing[]>(this.cardListingURL));
+
+  
+  getAllCardListings(): Observable<any>{
+    //Active Status 
+    return this.http.get(this.cardListingURL + '/' + 'status/' + '1e207de7-49d2-4963-8c0d-55095be5bda8');
+  }
+
+  postCardListing(listing: CardListingRequest){
+    return firstValueFrom(this.http.post<any>(this.cardListingURL, listing))
+  }
+
+  getCardListingById(id: string): Observable<any>{
+    return this.http.get(this.cardListingURL + '/' + id);
+  }
+
+  updateHighestBidder(request: BidRequest){
+    return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateBidder", request))
   }
 }

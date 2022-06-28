@@ -1,0 +1,100 @@
+
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+
+    * {
+      --Space-Cadet: #2F3061;
+      --Yellow-Crayola: #F4D35E;
+      --Sweet-Brown: #A43939;
+      --Jet: #343434;
+      --Snow: #FFFBFF;
+    }
+    div{
+  /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: 'Karla', sans-serif;
+    }
+  
+    .menu {
+      background-color: #343434;
+    }
+  
+  
+  
+    .title {
+    color: #F4D35E;
+    font-family: 'Righteous', cursive;
+    }
+  
+    .title:hover {
+      color: #343434;
+    }
+  
+    .exit {
+      color: #A43939;
+      font-size: 2rem;
+    }
+  
+    .item:hover {
+      color: #343434;
+    }
+  
+    .item-title {
+      color: #F4D35E;
+    }
+  
+    .item-message {
+      color: #FFFBFF;
+    }
+  
+    .dropdown-item:hover {
+      background-color: #2F3061;
+    }
+
+    .time-left{
+      color: #A43939;
+    }
+
+    .current-bid{
+      color:#F4D35E
+    }

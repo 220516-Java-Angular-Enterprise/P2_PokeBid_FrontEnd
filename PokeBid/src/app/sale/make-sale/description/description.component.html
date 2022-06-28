@@ -1,0 +1,73 @@
+<div class="column sale" *ngFor="let pokemon of currentPokemon">
+    <div class=" d-flex column justify-content-between">
+        <div class="col-sm-4 img">
+
+            <!--Slide container-->
+
+            <div class="container">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  </ol>
+              
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src={{pokemon.images.large}} alt="New york" style="width:100%;">
+                    </div>
+            
+                  </div>
+              
+                  <!-- Left and right controls -->
+                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+        </div>
+
+        <!--Description container-->
+
+        <div class="flex-column d-flex align-items-start">
+          <p class="card-text name align-self-center">{{pokemon.name}}</p>
+          <div class="rounded fill overflow-auto mt-2"
+          style="height:40%; background-color:#514e4e;">
+            <p class="card-text description">
+            Description: {{currentListing.card_description}}
+          </p></div>
+
+          <div class="rounded flex-column d-flex justify-content-evenly" style="height:45%">
+            <div class=" card-text description"><p>Condition: {{currentListing.condition.condition}}</p></div>
+            <div class=" card-text description"><p>Rarity: {{pokemon.rarity}}</p></div>
+            <div class=" card-text description"><a href={{pokemon.cardmarket.url}} target="_blank" style="text-decoration: underline; color: #FFFBFF;">Market Evaluation</a></div>
+          </div>
+
+        </div>
+
+        <!--Live chat container-->
+
+        <div class="col-sm-4 liveChat overflow-auto justify-content-center" style="height: 750px;">
+          <div class="d-flex h1 justify-content-center align-items-center mb-3">Live Chat</div>
+      <div class="overflow-auto" style="height:550px ">
+        <div *ngFor="let msg of greetings">
+          <div class="container h3 rounded mb-2 msg">
+                  <p>{{msg}}</p>
+          </div>
+        </div> 
+      </div>
+        <form #loginForm=ngForm style="bottom:5%; position:absolute;">
+          <div class="d-flex flex-column justify-content-center">
+              <br>
+              <textarea style="color: black;" cols="63" autocomplete="on" placeholder="Type Your Message..." name="newmessage" [(ngModel)]="newmessage" required (keydown.enter)="sendMessage()" (keydown.enter)="onKeydown($event)"></textarea>
+              <button class="btn sendBtn" (click)="sendMessage()" [disabled]="!loginForm.valid">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
