@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, AuthState } from '@auth0/auth0-angular';
 import {HttpClient } from '@angular/common/http';
+import {  } from 'jwt-decode';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -8,11 +10,12 @@ import {HttpClient } from '@angular/common/http';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   private userURL = "http://localhost:8080/pokebid/auth";
 
   isLoggedIn: boolean = false;
+
 
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe(b => {
@@ -22,12 +25,14 @@ export class AuthComponent implements OnInit {
 
   logIn(): void {
     this.auth.loginWithRedirect();
+    
   }
 
   logOut(): void {
     this.auth.logout();
     
   }
+
 
 }
   
