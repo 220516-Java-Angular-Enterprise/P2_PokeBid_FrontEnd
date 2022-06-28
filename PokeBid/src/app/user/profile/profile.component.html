@@ -1,0 +1,35 @@
+<div class="banner">
+    <h1>Hello Person!</h1>
+</div>
+
+<p class="title">My Account</p>
+
+<div class="column accountContainer">
+    <div class="row accountDetails">
+        <div class="col-sm-4">
+            <i class="bi bi-person-circle icon"></i>
+            <p class="subtitle">Account Details</p>
+            <p class="userInfo">Username: </p>
+            <p class="userInfo">Email: </p>
+            <div class="userInfo"><button class="btn btn-link button" (click)='openChangePasswordDialog()'>Change Password</button></div>
+            <div class="userInfo"><button class="btn btn-link button" (click)='openChangeEmailDialog()'>Change Email</button></div>
+            <div class="line"></div>
+        </div>
+        <div class="col-sm-4">
+            <i class="bi bi-clock-history icon"></i>
+            <p class="subtitle">User History</p>
+            <p class="button"><button class="btn btn-link button" (click)='openBidDialog()'>Bids</button> </p>
+            <p class="button"><button class="btn btn-link button" (click)='openSaleDialog()'>Sales</button></p>
+            <div class="line"></div>
+        </div>
+        <div class="col-sm-4">
+            <i class="bi bi-emoji-heart-eyes icon"></i>
+            <p class="subtitle">Favorites</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Your information will be collected and handeled in accordance with our<button class="btn btn-link privacyBtn" (click)='openPrivacyDialog()'>Privacy Policy</button></p>
+        </div>
+    </div>
+</div>

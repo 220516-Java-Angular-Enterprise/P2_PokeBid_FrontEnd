@@ -1,5 +1,5 @@
 <div class="column">
-    <div class="row">
+    <div class="row" id="header">
         <!--Logo-->
         <div class="col-sm-3 logo"><a href="#" class="logoLink"><img src="https://github.com/220516-Java-Angular-Enterprise/P2_PokeBid_FrontEnd/blob/main/surprisedpika.png?raw=true" alt="Pokemon"></a></div>
         <!--Main Title-->
@@ -30,14 +30,16 @@
                         </div>
                         <!-- User Icon Drop Down -->
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user headerIcon"></span></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="glyphicon glyphicon-user headerIcon"></span></a>
                             <!-- Drop Down Menu -->
-                            <div class="dropdown-menu">
-                              <app-auth></app-auth>
-                            </div>
+                            <app-account></app-account>
+                              
                         </div>
                         <!-- Dark Mode Icon -->
-                        <!-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="bi bi-circle-half headerIcon halfCircle"></i></a> -->
+                        <div class="nav-item dropdown">
+                            <a class="nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-circle-half headerIcon halfCircle"></i></a>
+                            <app-dark-mode></app-dark-mode>
+                        </div>
                     </div>
                 </div>
             </nav>

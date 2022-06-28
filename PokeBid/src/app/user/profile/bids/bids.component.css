@@ -1,0 +1,7 @@
+mat-dialog-content{
+    width: 2000px;
+    height: 3000px;
+    background-color: #343434;
+    padding: 10px;
+    color: white
+}

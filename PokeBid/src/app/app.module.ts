@@ -20,6 +20,14 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
 import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
 import { LiveAuctionComponent } from './sale/make-sale/live-auction/live-auction.component';
 import { DescriptionComponent } from './sale/make-sale/description/description.component';
+import { DarkModeComponent } from './common/header/nav-bar/nav-bar/dark-mode/dark-mode.component';
+import { AccountComponent } from './common/header/nav-bar/nav-bar/account/account.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { BidsComponent } from './user/profile/bids/bids.component';
+import { SalesComponent } from './user/profile/sales/sales.component';
+import { PrivacyPolicyComponent } from './user/profile/privacy-policy/privacy-policy.component';
+import { ChangePasswordComponent } from './user/profile/change-password/change-password.component';
+import { ChangeEmailComponent } from './user/profile/change-email/change-email.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,15 @@ import { DescriptionComponent } from './sale/make-sale/description/description.c
     PinnedComponent,
     MakeSaleComponent,
     LiveAuctionComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    DarkModeComponent,
+    AccountComponent,
+    ProfileComponent,
+    BidsComponent,
+    SalesComponent,
+    PrivacyPolicyComponent,
+    ChangePasswordComponent,
+    ChangeEmailComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
