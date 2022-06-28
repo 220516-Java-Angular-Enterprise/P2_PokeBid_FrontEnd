@@ -63,11 +63,11 @@ connect() {
   const socket = new SockJS('http://localhost:8080/pokebid/testchat');
   this.stompClient = Stomp.over(socket);
   const _this = this;
-  this.stompClient.connect({}, function (frame: string) {
+  this.stompClient.connect({}, function (auction_id: "5ebecd0c-2f8d-40da-88f2-27cabc11868d", frame: string) {
     console.log('Connected: ' + frame);
-    _this.stompClient.subscribe('/start/initial', function(hello: { body: string; }){
+    _this.stompClient.subscribe('/start/initial', function(hello: { auction_id: "5ebecd0c-2f8d-40da-88f2-27cabc11868d", body: string; }){
       console.log(JSON.parse(hello.body));
-      _this.showMessage(JSON.parse(hello.body));
+      _this.showMessage(JSON.parse(hello.auction_id), JSON.parse(hello.body));
     });
  });
 }
@@ -81,8 +81,9 @@ sendMessage() {
   this.newmessage = "";
 }
 
-showMessage(message: string) {
-  this.greetings.push(message);
+showMessage(auction_id: string, message: string) {
+  if (auction_id == this.currentListing.id) {
+    this.greetings.push(message); }
   //this.greetings.push({auction_id: "c899812c-0990-48c7-807d-32fa05c55310",username: this.username + this.randInt, message });
 }
 
