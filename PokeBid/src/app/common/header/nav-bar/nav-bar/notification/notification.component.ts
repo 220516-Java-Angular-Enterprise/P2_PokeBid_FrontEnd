@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/users';
 import { CardListing } from 'src/app/models/cardListing';
 import { Component, OnInit } from '@angular/core';
 import { Notification } from 'src/app/models/notification';
@@ -5,6 +6,8 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { AuthService } from '@auth0/auth0-angular';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -14,23 +17,43 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class NotificationComponent implements OnInit {
 
-  constructor(private notificationsService: NotificationsService, private http:HttpClient, private pokemon: PokemonService, private router: Router) { }
+  constructor(private notificationsService: NotificationsService, private http:HttpClient, private pokemon: PokemonService, private router: Router, private auth: AuthService, private userService: UserService) { }
 
   fullNotifications: Notification[] = [];
+  isLoggedIn: boolean = false;
+  email?: string = '';
+  user: User = {
+    id: '',
+    username: '',
+    password: '',
+    address: '',
+  }; 
 
   async ngOnInit() {
-    await this.notificationsService.getNotifications().toPromise().then((data:any) => {
-      this.fullNotifications = data;
-      console.log(this.fullNotifications)
+  await this.auth.isAuthenticated$.subscribe(data =>{
+    this.isLoggedIn = data;
+  })
 
-      this.fullNotifications.forEach(notification => {
-        this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
-          notification.cardListing.card_name = data.data[0].name
-          console.log(notification);
-        })
+  if(this.isLoggedIn){
+  await this.auth.user$.subscribe(u=>{
+      this.email = u?.email;
+      this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
+        this.user = data;
+        console.log(this.user);
+    })
+    })
+  }
+  await this.notificationsService.getNotifications(this.user.id).toPromise().then((data:any) => {
+    this.fullNotifications = data;
+    console.log(this.fullNotifications)
+    this.fullNotifications.forEach(notification => {
+      this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
+        notification.cardListing.card_name = data.data[0].name
+        console.log(notification);
       })
     })
-    console.log(this.fullNotifications)
+  })
+  
   }
 
   goToListing(id: any){
@@ -38,15 +61,5 @@ export class NotificationComponent implements OnInit {
     console.log(id);
   }
   
-  //ngOnInit(): void {
-//
-//    this.notificationsService.getPinned().subscribe( (listing) => {this.fullNotifications = listing
-//    this.fullNotifications.forEach(notification => {
-//      this.pokemon.getCardById(notification.listing.card_id).subscribe((json) => {
- //       notification.listing.card_name = json.data[0].name
- //     })
- //   })
- //   });
- // }
 
 }

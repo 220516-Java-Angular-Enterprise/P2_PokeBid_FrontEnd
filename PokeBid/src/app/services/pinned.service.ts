@@ -20,11 +20,11 @@ export class PinnedService {
 
   constructor(private http:HttpClient) { }
 
-  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/pinnedCards/ec40ae5b-12ed-4fb1-8051-199bb2d6533f'; //Add user ID
+  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/pinnedCards/'; //Add user ID
 
   
   
-  getPinned(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiUrl);
+  getPinned(id: string): Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl + id);
   }
 }

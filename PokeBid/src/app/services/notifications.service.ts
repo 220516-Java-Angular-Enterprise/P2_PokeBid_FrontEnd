@@ -19,11 +19,10 @@ export class NotificationsService {
 
   constructor(private http:HttpClient) { }
 
-  private notificationUrl = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/notification/5752c9fd-fac2-4313-8407-92076b6e6b69";
+  private notificationUrl = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/notification/";
 
-  getNotifications(): Observable<any>{
-    return this.http.get(this.notificationUrl);
+  getNotifications(id: string): Observable<any>{
+    return this.http.get(this.notificationUrl + id);
   }
 
 }
- 
