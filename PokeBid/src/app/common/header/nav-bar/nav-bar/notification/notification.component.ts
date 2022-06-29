@@ -50,7 +50,7 @@ export class NotificationComponent implements OnInit {
   }
 
   getNotifications() {
-    this.notificationsService.getNotifications().toPromise().then((data:any) => {
+    this.notificationsService.getNotificationsByUserId(this.user.id).toPromise().then((data:any) => {
       this.fullNotifications = data;
       console.log(this.fullNotifications)
 

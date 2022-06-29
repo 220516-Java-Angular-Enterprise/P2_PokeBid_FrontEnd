@@ -20,11 +20,15 @@ export class PinnedService {
 
   constructor(private http:HttpClient) { }
 
-  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/pinnedCards/'; //Add user ID
+  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/';
 
   
   
   getPinnedByUserId(id: string): Observable<any>{
-    return this.http.get(this.apiUrl + id);
+    return this.http.get(this.apiUrl + 'pinnedCards/' + id);
+  }
+
+  deletePinned(id: string){
+    return this.http.delete(this.apiUrl + 'delete/' + id).subscribe((data:any)=> { id = data; console.log(id); });;
   }
 }

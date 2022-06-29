@@ -8,7 +8,7 @@
     </div>
   </li>
 
-  <li class="dropdown-item item" *ngFor="let pinned of fullPinCards">
+  <li class="dropdown-item item" *ngFor="let pinned of fullPinCards" [(ngModel)]="fullPinCards">
     <!-- Pinned Template -->
     <div class="d-flex justify-content-between">
       <!-- Left -->
@@ -27,7 +27,24 @@
       </div>
       <!-- Close Button -->
       <div class="d-inline-flex">
-        <button type="button" class="btn btn-danger" style="margin-left:7px;">X</button>
+        <button type="button" class="btn btn-danger" style="margin-left:7px;" (click)="deletePinned(pinned.id); getPinned();">X</button>
+      </div>
+    </div>
+  </li>
+
+  <li class="dropdown-item item" *ngIf="fullPinCards.length == 0">
+    <!-- Notification Template -->
+    <div class="d-flex justify-content-between">
+      <!-- Left -->
+  
+      <!-- Middle -->
+      <div class="d-inline-flex flex-fill row">
+        <div class="d-flex justify-content-center">
+          <p class="h2 item-title">\(^-^)/</p>
+        </div>
+        <div class="d-flex mb-2 item-message">
+          <p class="h3">You have no pinned items right now!</p>
+        </div>
       </div>
     </div>
   </li>

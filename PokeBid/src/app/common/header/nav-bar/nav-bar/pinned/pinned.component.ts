@@ -47,10 +47,28 @@ email?: string = '';
 
 }
 
+getPinned() {
+  this.pinnedService.getPinnedByUserId(this.user.id).toPromise().then((data:any) => {
+    this.fullPinCards = data;
+    console.log(this.fullPinCards)
+    this.fullPinCards.forEach(notification => {
+      this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
+        notification.cardListing.card_name = data.data[0].name
+        console.log(notification);
+      })
+    })
+  })
+}
+
 goToListing(id: any){
   this.router.navigateByUrl(`make-sale/${id}`)
-  console.log(id);
 }
+
+deletePinned(id: string){
+  this.pinnedService.deletePinned(id);
+  this.getPinned();
+}
+
 
 }
 
