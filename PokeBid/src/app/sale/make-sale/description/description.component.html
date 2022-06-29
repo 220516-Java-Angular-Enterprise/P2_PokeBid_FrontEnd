@@ -37,7 +37,7 @@
         <div class="flex-column d-flex align-items-start">
           <p class="card-text name align-self-center">{{pokemon.name}}</p>
           <div class="rounded fill overflow-auto mt-2"
-           style="height:40%; background-color:#514e4e;">
+          style="height:40%; background-color:#514e4e;">
             <p class="card-text description">
             Description: {{currentListing.card_description}}
           </p></div>
@@ -52,22 +52,22 @@
 
         <!--Live chat container-->
 
-        <div class="col-sm-4 liveChat overflow-auto" style="height: 750px;">Live Chat
-          <div style="overflow-y: scroll; height:80%;" >
-        <div *ngFor="let msg of greetings" class="overflow-auto">
-          <div class="container">
+        <div class="col-sm-4 liveChat overflow-auto justify-content-center" style="height: 750px;">
+          <div class="d-flex h1 justify-content-center align-items-center mb-3">Live Chat</div>
+      <div class="overflow-auto" style="height:550px ">
+        <div *ngFor="let msg of greetings">
+          <div class="container h3 rounded mb-2 msg">
                   <p>{{msg}}</p>
           </div>
-        </div> </div>
+        </div> 
+      </div>
         <form #loginForm=ngForm style="bottom:5%; position:absolute;">
-          <div>
+          <div class="d-flex flex-column justify-content-center">
               <br>
-              <textarea style="color: black;" cols="75" autocomplete="off" placeholder="Type Your Message..." name="newmessage" [(ngModel)]="newmessage" required></textarea>
-              <button style="position: static;" class="btn btn-primary" (click)="sendMessage()" [disabled]="!loginForm.valid">Send</button>
+              <textarea style="color: black;" cols="63" autocomplete="on" placeholder="Type Your Message..." name="newmessage" [(ngModel)]="newmessage" required (keydown.enter)="sendMessage()" (keydown.enter)="onKeydown($event)"></textarea>
+              <button class="btn sendBtn" (click)="sendMessage()" [disabled]="!loginForm.valid">Send</button>
           </div>
         </form>
       </div>
     </div>
-    
 </div>
-<app-live-auction></app-live-auction>

@@ -1,8 +1,8 @@
 import { BidRequest } from './../../../models/dtos/bidRequerst';
-import { User } from './../../../models/users';
 import { CardListing } from './../../../models/cardListing';
 import { Component, OnInit } from '@angular/core';
 import { CardListingService } from 'src/app/services/card-listing.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-live-auction',
@@ -11,7 +11,7 @@ import { CardListingService } from 'src/app/services/card-listing.service';
 })
 export class LiveAuctionComponent implements OnInit {
 
-  constructor(private listingService: CardListingService) { }
+  constructor(private listingService: CardListingService, public currRoute: ActivatedRoute) { }
 
   currentListing: CardListing = {
     card_id: '',
@@ -28,14 +28,17 @@ export class LiveAuctionComponent implements OnInit {
     }
   }
   currentBid: any = undefined;
+  id: string = '';
 
   
 
 
   async ngOnInit() {
-    await this.listingService.getCardListingById('c899812c-0990-48c7-807d-32fa05c55310').toPromise().then((data: any) =>{
+    this.currRoute.params.subscribe(p => {
+      this.id = p['id'];
+    })
+    await this.listingService.getCardListingById(this.id).toPromise().then((data: any) =>{
       this.currentListing = data;
-      console.log(this.currentListing);
     })
 
   }

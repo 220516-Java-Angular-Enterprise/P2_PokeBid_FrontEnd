@@ -2,7 +2,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { ICard } from './../../models/pokemon/pokemon';
 import { CardListingService } from './../../services/card-listing.service';
 import { CardListing } from './../../models/cardListing';
-
+import { Router } from '@angular/router';
 import { CreateListingComponent } from './createListing/create-listing/create-listing.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CardListingsComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private service: CardListingService, private pokemon: PokemonService) { }
+  constructor(private dialog: MatDialog, private service: CardListingService, private pokemon: PokemonService, private router: Router) { }
 
 
   // Dialog
@@ -66,6 +66,11 @@ export class CardListingsComponent implements OnInit {
     this.filteredListings.push(listing);
       }
     })
+  }
+
+  goToListing(id: any){
+    this.router.navigateByUrl(`make-sale/${id}`)
+    console.log(id);
   }
 
   
