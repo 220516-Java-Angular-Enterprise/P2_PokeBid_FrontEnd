@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
-import {firstValueFrom} from 'rxjs';
+import {firstValueFrom, Observable} from 'rxjs';
 import { User } from '../models/users';
 
 
@@ -18,11 +18,14 @@ export class UserService {
     return firstValueFrom(this.http.get<User[]>(this.userURL));
   }
 
-  getUserById(id: string): Promise<User>{
-    return firstValueFrom(this.http.get<User>(this.userURL + "/" + id))
+  getUserById(id: string): Observable<any>{
+    return this.http.get<any>(this.userURL + "/" + id)
   }
 
   getTest(): Promise<any[]>{
       return firstValueFrom(this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos/1'))
   }
+
+  
+
 }

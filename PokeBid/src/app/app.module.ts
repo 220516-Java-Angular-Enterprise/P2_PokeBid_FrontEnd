@@ -28,6 +28,7 @@ import { SalesComponent } from './user/profile/sales/sales.component';
 import { PrivacyPolicyComponent } from './user/profile/privacy-policy/privacy-policy.component';
 import { ChangePasswordComponent } from './user/profile/change-password/change-password.component';
 import { ChangeEmailComponent } from './user/profile/change-email/change-email.component';
+import { FavoritesComponent } from './user/profile/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ChangeEmailComponent } from './user/profile/change-email/change-email.c
     SalesComponent,
     PrivacyPolicyComponent,
     ChangePasswordComponent,
-    ChangeEmailComponent
+    ChangeEmailComponent,
+    FavoritesComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [

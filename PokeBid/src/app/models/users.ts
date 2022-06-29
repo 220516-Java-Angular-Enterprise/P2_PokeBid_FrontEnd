@@ -9,9 +9,9 @@ export interface User{
   adress: string;
   role: string;
   email: string;
-  reviews: Review[];
-  pinned: Pinned[]; 
-  history: History[];
-  listings: CardListing[]; 
+  reviews?: Review[];
+  pinned?: Pinned[]; 
+  history?: History[];
+  listings?: CardListing[]; 
   
 }

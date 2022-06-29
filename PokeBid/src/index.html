@@ -58,8 +58,6 @@
         var liveContainer = document.getElementById("liveContainer");
         var currentBidder = document.getElementById("currentBidder");
         var currentPrice = document.getElementById("currentPrice");
-    
-
         if(modeId == "dark"){
           /*Home page*/
           listingContianer.style.backgroundColor = ("#343434");
@@ -73,6 +71,8 @@
           liveContainer.style.backgroundColor = ("#343434");
           currentBidder.style.backgroundColor = ("white");
           currentPrice.style.color = ("white");
+
+          /*Profile*/
         }else if(modeId == "light"){
           /*Home Page*/
           document.body.style.backgroundColor = "white";
@@ -103,9 +103,32 @@
           currentPrice.style.color = ("white");
         }
       }
-
+      
+    function show(url) {
+        // Get the modal
+        var modal = document.getElementById("myModal");
+    
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("btnID");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          
+          modalImg.src = url;
+          captionText.innerHTML = this.alt;
+        }
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+      }
+  
       </script>
-
 </body>
 
 </html>
