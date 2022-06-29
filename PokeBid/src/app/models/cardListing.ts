@@ -1,6 +1,6 @@
 import { Condition } from './condition';
 import { Status } from './status';
-import { User } from './users';
+import { User } from './user';
 import { Timestamp } from 'rxjs';
 
 

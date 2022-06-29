@@ -28,7 +28,7 @@ import { RedirectComponent } from './user/redirect/redirect.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
-  //{path: '', component: TaskComponent}
+  {path: '', component: PinnedComponent}
 
 ]
 
