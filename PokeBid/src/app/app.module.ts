@@ -23,7 +23,6 @@ import { DescriptionComponent } from './sale/make-sale/description/description.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './user/create-account/create-account.component';
 import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
-import { RedirectComponent } from './user/redirect/redirect.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -47,7 +46,6 @@ const appRoutes: Routes = [
     DescriptionComponent,
     CreateAccountComponent,
     ConfirmUserComponent,
-    RedirectComponent
   ],
   entryComponents: [CreateListingComponent],
   imports: [
@@ -62,7 +60,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,})
 
   ],
   providers: [],

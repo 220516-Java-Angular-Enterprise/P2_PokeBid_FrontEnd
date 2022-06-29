@@ -1,4 +1,4 @@
-import { RedirectComponent } from './user/redirect/redirect.component';
+
 import { CreateAccountComponent } from './user/create-account/create-account.component';
 import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,10 +13,6 @@ const routes: Routes = [
     path: 'create-account/:id',
     component: CreateAccountComponent
   },
-  {
-    path: 'redirect',
-    component: RedirectComponent
-  }
 ]
 
 @NgModule({

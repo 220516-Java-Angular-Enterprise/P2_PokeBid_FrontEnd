@@ -16,5 +16,5 @@ export interface CardListing{
   time_end?: Date;
   imgUrl?: string;
   card_name?: string;
-
+  buy_out_price?: number;
 }
