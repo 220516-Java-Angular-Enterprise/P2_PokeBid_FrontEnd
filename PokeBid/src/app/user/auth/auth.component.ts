@@ -15,10 +15,6 @@ export class AuthComponent implements OnInit {
 
   constructor(public auth: AuthService, private router: Router, private userService: UserService) { }
 
-  private userURL = "http://localhost:8080/pokebid/auth";
-  //https://pokebid.s3.amazonaws.com/
-
-  
   isLoggedIn: boolean = false;
   user: User = {
     id: '',
