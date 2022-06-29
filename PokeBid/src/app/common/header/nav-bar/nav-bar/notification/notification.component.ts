@@ -28,6 +28,8 @@ export class NotificationComponent implements OnInit {
     password: '',
     address: '',
   }; 
+
+
   ngOnInit(): void {
   this.auth.user$.subscribe((u:any)=>{
     this.email = u.email;
@@ -35,6 +37,11 @@ export class NotificationComponent implements OnInit {
       this.user = data;
         this.notificationsService.getNotificationsByUserId(this.user.id).subscribe(notifs=>{
           this.fullNotifications = notifs;
+            this.fullNotifications.forEach(notification => {
+              this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
+              notification.cardListing.card_name = data.data[0].name
+        })
+      })
     })
     })
   })

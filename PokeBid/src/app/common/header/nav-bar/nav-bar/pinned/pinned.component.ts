@@ -29,17 +29,16 @@ email?: string = '';
 
 
   async ngOnInit() {
+  this.auth.user$.subscribe((u:any)=>{
+    this.email = u.email;
+    this.userService.getUsersByEmail(this.email).subscribe(data=>{ 
+      this.user = data;
+        this.pinnedService.getPinnedByUserId(this.user.id).subscribe(notifs=>{
+          this.fullPinCards = notifs;
+    })
+    })
+  })
 
-  // await this.pinnedService.getPinnedByUserId(this.user.id).toPromise().then((data:any) => {
-  //   console.log(this.user.id)
-  //   this.fullPinCards = data;
-  //   console.log(this.fullPinCards)
-  //   this.fullPinCards.forEach(pinned => {
-  //     this.pokemon.getCardById(pinned.cardListing.card_id).subscribe((json) => {
-  //       pinned.cardListing.card_name = json.data[0].name
-  //     })
-  //   })
-  // });
 
 
 
