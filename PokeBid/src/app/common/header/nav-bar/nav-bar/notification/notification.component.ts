@@ -19,7 +19,7 @@ export class NotificationComponent implements OnInit {
   fullNotifications: Notification[] = [];
 
   async ngOnInit() {
-    await this.notificationsService.getNotifications().toPromise().then((data:any) => {
+    this.notificationsService.getNotifications().toPromise().then((data:any) => {
       this.fullNotifications = data;
       console.log(this.fullNotifications)
 
@@ -33,11 +33,33 @@ export class NotificationComponent implements OnInit {
     console.log(this.fullNotifications)
   }
 
+  getNotifications() {
+    this.notificationsService.getNotifications().toPromise().then((data:any) => {
+      this.fullNotifications = data;
+      console.log(this.fullNotifications)
+
+      this.fullNotifications.forEach(notification => {
+        this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
+          notification.cardListing.card_name = data.data[0].name
+          console.log(notification);
+        })
+      })
+    })
+  }
+
   goToListing(id: any){
     this.router.navigateByUrl(`make-sale/${id}`)
     console.log(id);
   }
-  
+
+  deleteNotification(id: any){
+    this.notificationsService.deleteNotification(id);
+    this.getNotifications();
+    console.log("After Deleting It: " + this.fullNotifications)
+  }
+
+
+
   //ngOnInit(): void {
 //
 //    this.notificationsService.getPinned().subscribe( (listing) => {this.fullNotifications = listing
