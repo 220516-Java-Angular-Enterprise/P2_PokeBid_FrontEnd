@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardListingService } from 'src/app/services/card-listing.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationsService } from 'src/app/services/notifications.service';
-import { User } from 'src/app/models/users';
+import { User } from 'src/app/models/user';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';

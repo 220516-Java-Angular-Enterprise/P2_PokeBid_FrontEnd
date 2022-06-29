@@ -161,7 +161,8 @@ console.log(listing);
 //Call post request
 this.listingService.postCardListing(listing);
 }
-  
+
+
 
 
 

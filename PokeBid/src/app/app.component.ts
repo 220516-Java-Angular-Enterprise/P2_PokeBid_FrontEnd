@@ -17,35 +17,35 @@ export class AppComponent {
 
   isLoggedIn: boolean = false;
   email?:string = '';
-  id: string = crypto.randomUUID();
   user: User = User
 
   async ngOnInit(){
-  await this.auth.isAuthenticated$.subscribe((data:boolean) => {
+  this.auth.isAuthenticated$.subscribe((data:boolean) => { //Checks if user is logged in.
     this.isLoggedIn = data;
+    if(this.isLoggedIn){ //If Logged in, get emails
+    this.auth.user$.subscribe(u=>{
+    this.email = u?.email;
+    
+    this.userservice.getUsersByEmail(this.email).toPromise().then((data:any)=>{ //Fetch User by Email
+      this.user = data;
+      console.log(this.user);
+    if(this.user == null){ //If User doesnt exist by Email
+      this.goToCreateAccount(this.email); // Go to Create Account
+    } else {
+      this.router.navigateByUrl(''); // Go to Homepage
+    }
   })
-  if(this.isLoggedIn){
-  await this.auth.user$.subscribe(u=>{
-      this.email = u?.email;
-      
-      this.userservice.getUsersByEmail(this.email).toPromise().then((data:any)=>{
-        this.user = data;
-        console.log(this.user);
-      if(this.user == null){
-        this.goToCreateAccount(this.id);
-      } else {
-        this.router.navigateByUrl('');
-      }
-    })
-    })
+  })
   }
+
+  })
 
 
 
   }
 
-  goToCreateAccount(id: string){
-    this.router.navigateByUrl(`create-account/${id}`)
+  goToCreateAccount(email?: string){
+    this.router.navigateByUrl(`create-account/${email}`)
   }
 
   hasRoute(route: string): boolean{
