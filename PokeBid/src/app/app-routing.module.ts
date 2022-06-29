@@ -12,7 +12,7 @@ const routes: Routes = [
     component: MakeSaleComponent
   },
   {
-    path: 'create-account/:id',
+    path: 'create-account/:email',
     component: CreateAccountComponent
   },
   { path: 'account/:id',

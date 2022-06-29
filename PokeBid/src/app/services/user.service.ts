@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
- 
+
   private userURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users"
   private userRegisterURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users/register"
   
