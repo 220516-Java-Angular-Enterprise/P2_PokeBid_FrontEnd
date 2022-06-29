@@ -27,12 +27,12 @@
 
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="username" />
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="username" [ngModel]="myUser.username"/>
                   <label class="form-label" for="form3Example1cg">username</label>
                 </div>
                 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password" />
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password" [ngModel]="myUser.password"/>
                   <label class="form-label" for="form3Example4cg">Password</label>
                 </div>
 
@@ -42,12 +42,12 @@
                 </div>-->
 
                 <div class="form-outline mb-4">
-                  <input type="address" id="form3Example3cg" class="form-control form-control-lg" name="address" />
+                  <input type="address" id="form3Example3cg" class="form-control form-control-lg" name="address" [ngModel]="myUser.address"/>
                   <label class="form-label" for="form3Example3cg">address</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" />
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" [ngModel]="myUser.email"/>
                   <label class="form-label" for="form3Example3cg">Email</label>
                 </div>
 
