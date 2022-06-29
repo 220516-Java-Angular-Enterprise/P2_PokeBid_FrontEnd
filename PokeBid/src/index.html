@@ -35,11 +35,6 @@
           });
       });     
 
-      //Change background color on click
-      function chBackcolor(color) {
-        document.body.style.background = color;
-    }
-
       //Update bid button based on user input
       function changeBidPrice(clickedId){
         if(clickedId == "bidTen"){
@@ -53,8 +48,87 @@
         }
         
       }
-      </script>
 
+      //Light mode or dark mode
+      function screenMode(modeId){
+        var header = document.getElementById("header");
+        var listingContianer = document.getElementById("listingContainer");
+        var descriptionContainer = document.getElementById("descriptionContainer");
+        var sale = document.getElementById("sale");
+        var liveContainer = document.getElementById("liveContainer");
+        var currentBidder = document.getElementById("currentBidder");
+        var currentPrice = document.getElementById("currentPrice");
+        if(modeId == "dark"){
+          /*Home page*/
+          listingContianer.style.backgroundColor = ("#343434");
+          header.style.backgroundColor = "#343434";
+          document.body.style.backgroundColor = "black";
+
+          /*Sale page*/
+          sale.style.backgroundColor = ("#343434");
+          descriptionContainer.style.backgroundColor = ("#343434");
+          descriptionContainer.style.color = ("white");
+          liveContainer.style.backgroundColor = ("#343434");
+          currentBidder.style.backgroundColor = ("white");
+          currentPrice.style.color = ("white");
+
+          /*Profile*/
+        }else if(modeId == "light"){
+          /*Home Page*/
+          document.body.style.backgroundColor = "white";
+          listingContianer.style.backgroundColor = ("#FFFBFF");
+          header.style.backgroundColor = ("#FFFBFF");
+
+          /*Sale page*/
+          sale.style.backgroundColor = ("#FFFBFF");
+          descriptionContainer.style.backgroundColor = ("#FFFBFF");
+          descriptionContainer.style.color = ("black");
+          document.body.style.backgroundColor = "white";
+          liveContainer.style.backgroundColor = ("#FFFBFF");
+          currentBidder.style.backgroundColor = ("#F4D35E");
+          currentPrice.style.color = ("black");
+
+        }else{
+          /*Home page*/
+          header.style.backgroundColor = "#343434";
+          listingContianer.style.backgroundColor = ("#343434");
+          document.body.style.backgroundColor = "white";
+
+          /*Sale page*/
+          sale.style.backgroundColor = ("#343434");
+          descriptionContainer.style.backgroundColor = ("#343434");
+          descriptionContainer.style.color = ("white");
+          liveContainer.style.backgroundColor = ("#343434");
+          currentBidder.style.backgroundColor = ("white");
+          currentPrice.style.color = ("white");
+        }
+      }
+      
+    function show(url) {
+        // Get the modal
+        var modal = document.getElementById("myModal");
+    
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("btnID");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          
+          modalImg.src = url;
+          captionText.innerHTML = this.alt;
+        }
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+      }
+  
+      </script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { PinnedService } from 'src/app/services/pinned.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/users';
+import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 
 @Component({

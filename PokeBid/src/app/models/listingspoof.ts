@@ -2,7 +2,7 @@
 
 
 import { Status } from './status';
-import { User } from './users';
+import { User } from './user';
 import { Timestamp } from 'rxjs';
 
 import { Conditional } from "@angular/compiler";
