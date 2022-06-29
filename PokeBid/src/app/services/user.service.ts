@@ -35,7 +35,7 @@ export class UserService {
   }
 
   postNewUser(newUserToRegister: NewUserRegistrationClass):Observable<NewUserRegistrationClass>{
-    return this.http.post<any>(this.userRegisterURL, newUserToRegister); //Change to register link. 
+    return this.http.post<any>(this.userRegisterURL, newUserToRegister);
   }
   
 

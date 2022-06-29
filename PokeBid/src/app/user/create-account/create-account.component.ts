@@ -44,6 +44,8 @@ export class CreateAccountComponent implements OnInit {
 
 
     this.userService.postNewUser(newUserRegistration).subscribe( (newUser) => (console.log(newUser)) );
+
+    
   }
 
 }
