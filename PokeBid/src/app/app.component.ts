@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'PokeBid';
-  isLoggedIn: boolean = false;
-  email?:string = '';
-  id: string = crypto.randomUUID();
 
   constructor(private auth: AuthService, private userservice: UserService, private router: Router,){}
 
+  isLoggedIn: boolean = false;
+  email?:string = '';
+  id: string = crypto.randomUUID();
   user: User = User
-
 
   async ngOnInit(){
   await this.auth.isAuthenticated$.subscribe((data:boolean) => {
     this.isLoggedIn = data;
   })
+  if(this.isLoggedIn){
   await this.auth.user$.subscribe(u=>{
       this.email = u?.email;
       
@@ -38,7 +38,8 @@ export class AppComponent {
       }
     })
     })
-    
+  }
+
 
 
   }
