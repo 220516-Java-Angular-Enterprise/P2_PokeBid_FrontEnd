@@ -20,9 +20,25 @@ import { NotificationComponent } from './common/header/nav-bar/nav-bar/notificat
 import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
 import { LiveAuctionComponent } from './sale/make-sale/live-auction/live-auction.component';
 import { DescriptionComponent } from './sale/make-sale/description/description.component';
+import { DarkModeComponent } from './common/header/nav-bar/nav-bar/dark-mode/dark-mode.component';
+import { AccountComponent } from './common/header/nav-bar/nav-bar/account/account.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { BidsComponent } from './user/profile/bids/bids.component';
+import { SalesComponent } from './user/profile/sales/sales.component';
+import { PrivacyPolicyComponent } from './user/profile/privacy-policy/privacy-policy.component';
+import { ChangePasswordComponent } from './user/profile/change-password/change-password.component';
+import { ChangeEmailComponent } from './user/profile/change-email/change-email.component';
+import { FavoritesComponent } from './user/profile/favorites/favorites.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './user/create-account/create-account.component';
 import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', component: PinnedComponent}
+
+]
 
 @NgModule({
   declarations: [
@@ -37,6 +53,15 @@ import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component
     MakeSaleComponent,
     LiveAuctionComponent,
     DescriptionComponent,
+    DarkModeComponent,
+    AccountComponent,
+    ProfileComponent,
+    BidsComponent,
+    SalesComponent,
+    PrivacyPolicyComponent,
+    ChangePasswordComponent,
+    ChangeEmailComponent,
+    FavoritesComponent
     CreateAccountComponent,
     ConfirmUserComponent,
   ],
@@ -53,10 +78,7 @@ import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
-    AuthModule.forRoot({
-      ...environment.auth,
-    }),
+    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,})
 
   ],
   providers: [],

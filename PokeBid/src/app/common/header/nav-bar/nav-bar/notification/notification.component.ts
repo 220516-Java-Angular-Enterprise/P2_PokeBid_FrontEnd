@@ -1,4 +1,4 @@
-import { User } from 'src/app/models/users';
+import { User } from 'src/app/models/user';
 import { CardListing } from 'src/app/models/cardListing';
 import { Component, OnInit } from '@angular/core';
 import { Notification } from 'src/app/models/notification';
