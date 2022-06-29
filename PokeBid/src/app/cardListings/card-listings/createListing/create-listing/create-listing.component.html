@@ -40,7 +40,7 @@
     <div class="h-100 d-flex justify-content-center align-items-center">
         <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField">
             <mat-label class="descriptionLabel">Description</mat-label>
-            <textarea matInput class="description" (keyup)="onKeyDesc($event)"></textarea>
+            <textarea matInput class="description" style="resize: none;" (keyup)="onKeyDesc($event)"></textarea>
         </mat-form-field>
 
         <!--Select starting price-->
@@ -48,8 +48,15 @@
             <mat-form-field appearance="standard" class="startingPriceField">
                 <span matPrefix class="dollarSign">$&nbsp;</span>
                 <span matSuffix class="trailingZeros">.00</span>
-                <mat-label class="startingPriceLabel">Starting Price</mat-label>
+                <mat-label class="startingPriceLabel">Bidding Price</mat-label>
                 <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyPrice($event)">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="startingPriceField">
+                <span matPrefix class="dollarSign">$&nbsp;</span>
+                <span matSuffix class="trailingZeros">.00</span>
+                <mat-label class="startingPriceLabel">Buy Now Price</mat-label>
+                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyBuyNowPrice($event)">
             </mat-form-field>
 
             <!--Select condition-->

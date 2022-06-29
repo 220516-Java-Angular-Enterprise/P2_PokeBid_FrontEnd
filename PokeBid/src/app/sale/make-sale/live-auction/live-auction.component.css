@@ -27,7 +27,7 @@
 }
 .currentPrice{
     text-align: center;
-    font-size: 40px;
+    font-size: 20px;
 }
 .bidPrice{
     display: flex;
@@ -63,6 +63,14 @@ margin: 10px;
     padding: 40px;
     background-color: #F4D35E;
 }
+
 .bidPrice button:focus{
-    border: 7px solid #F4D35E;
+  border: 7px solid #F4D35E;
+}
+
+.buy-btn{
+  width: 466px;
+  height: 115px;
+  margin-top: -1050px;
+  font-size: 20px;
 }

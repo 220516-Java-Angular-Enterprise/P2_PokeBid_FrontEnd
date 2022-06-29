@@ -83,7 +83,18 @@ export class CardListingsComponent implements OnInit {
     } else {
       this.openConfirmUser();
     }
+  }
 
+  refreshListing(){
+  this.service.getAllCardListings().toPromise().then((data:any) =>{
+  this.cardListings = data;
+  this.cardListings.forEach(listing => {
+    this.pokemon.getCardById(listing.card_id).subscribe(data => {
+      listing.imgUrl = data.data[0].images.small
+      listing.card_name = data.data[0].name
+      })
+    })
+  })
   }
 
   

@@ -33,6 +33,7 @@ card_description: string = '';
 selectTime: Date = new Date();
 searchName: string = '';
 searchRarity: any = undefined;
+buy_now: number = 0;
 isLoggedIn = false;
 user: User = {
   id: '',
@@ -57,19 +58,19 @@ async ngOnInit() {
     }
   )
 
-  await this.auth.isAuthenticated$.subscribe(data =>{
+  this.auth.isAuthenticated$.subscribe(data =>{
     this.isLoggedIn = data;
-  })
-
-  if(this.isLoggedIn){
-  await this.auth.user$.subscribe(u=>{
+      if(this.isLoggedIn){
+    this.auth.user$.subscribe(u=>{
       this.email = u?.email;
       this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
         this.user = data;
-        console.log(this.user);
     })
     })
   }
+  })
+
+
 
 }
 
@@ -137,6 +138,12 @@ onKeyPrice(event: any): number{
   return this.auction_bid;
 }
 
+onKeyBuyNowPrice(event: any): number{
+  this.buy_now = event.target.value;
+  console.log(this.buy_now)
+  return this.buy_now;
+}
+
 addListing(): void{
 let listing: CardListingRequest = {
   lister_id: this.user.id,
@@ -145,7 +152,8 @@ let listing: CardListingRequest = {
   status_id: '1e207de7-49d2-4963-8c0d-55095be5bda8',
   condition_id: this.condition_id,
   description: this.card_description,
-  endTime: this.selectTime
+  endTime: this.selectTime,
+  buy_out_price: this.buy_now
 };
 
 

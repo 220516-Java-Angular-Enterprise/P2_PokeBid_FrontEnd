@@ -20,14 +20,16 @@
   color: brown;
 }
 
+
 .bi-plus-circle{
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
-.bi-plus-circle:hover{
+.bi:hover{
   color: var(--Yellow-Crayola);
 }
+
 
 .bi-search{
   font-size: 1.8rem;
@@ -52,6 +54,14 @@
   margin-left: 25px;
 }
 
+.btn1{
+  width: 40px;
+  height: 40px;
+}
+
+.bi-arrow-clockwise{
+  font-size: 2rem;
+}
 
 .bi-star {
   font-size: 3rem;
