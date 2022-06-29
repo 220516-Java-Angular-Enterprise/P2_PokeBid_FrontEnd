@@ -1,4 +1,11 @@
-<a class="dropdown-item disable "><span>
-<div class="d-flex justify-content-center"  *ngIf="!isLoggedIn" (click)="logIn()"><p class="h2 loginLink">Log In</p></div>
-<div class="d-flex justify-content-center" *ngIf="isLoggedIn" (click)="logOut()"><p class="h2 loginLink">Log Out</p></div>
+<ul *ngIf="auth.user$ | async as user">
+    <li>{{ user.name }}</li>
+    <li>{{ user.email }}</li>
+</ul>
+
+<a class="dropdown-item disable"><span>
+<div class="d-flex justify-content-center"  *ngIf="!isLoggedIn" (click)="logIn()"><p class="h2">Log In</p></div>
+<div class="d-flex justify-content-center" *ngIf="isLoggedIn" (click)="logOut()"><p class="h2">Log Out</p></div>
+
   </span></a>
+

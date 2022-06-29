@@ -6,9 +6,9 @@ export interface User{
   id: string;
   username: string;
   password: string;
-  adress: string;
-  role: string;
-  email: string;
+  address: string;
+  role?: string;
+  email?: string;
   reviews?: Review[];
   pinned?: Pinned[]; 
   history?: History[];

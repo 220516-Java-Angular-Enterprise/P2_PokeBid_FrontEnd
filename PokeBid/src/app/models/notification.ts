@@ -1,8 +1,10 @@
 import { CardListing } from './cardListing';
-import { Timestamp } from 'rxjs';
+import { User } from './users'
+
 export interface Notification{
-  title: string;
-  message: string;
-  time: Timestamp<number>;
-  listing: CardListing; 
+  id?: string;
+  user: User;
+  cardListing: CardListing; 
+  message?: string;
+  
 }
