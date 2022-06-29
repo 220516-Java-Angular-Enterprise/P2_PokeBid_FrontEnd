@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+
+.banner{
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    color: black;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.banner h1{
+    font-family: 'Karla', sans-serif;
+    font-size: 40px;
+}
+
+.title{
+    font-family: 'Karla', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 100px;
+}
+.row{
+    text-align: center;
+}
+
+.icon{
+    font-size: 100px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.accountContainer > div{
+    margin: 200px;
+}
+
+.accountContainer .subtitle{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+
+}
+
+.accountDetails{
+    text-align: center;
+}
+
+.userInfo{
+    font-size: 25px;
+    margin-top: 45px;
+    margin-left: 30px;
+}
+
+.email{
+    margin-top: 60px;
+}
+
+.button{
+    font-size: 25px;
+    
+}
+.button:focus, .privacyBtn:focus {
+    outline: none;
+    box-shadow: none;
+}
+.subtitle{
+    margin-bottom: 50px;
+}
+
+.userInfo a, .button{
+    text-decoration: none;
+    color:  black;
+}
+.privacyBtn{
+    color: black;
+}
+.userInfo a:hover, .button:hover{
+    color: #A43939;
+    text-decoration: underline ;
+}
+
+.line {
+    border-left: 3px solid rgba(0, 0, 0, 0.233);
+    height: 500px;
+    position: absolute;
+    left: 100%;
+    margin-left: -3px;
+    top: 0;
+  }

@@ -5,9 +5,11 @@ import { Timestamp } from 'rxjs';
 
 export interface History{
   id: string;
-  time: Timestamp<number>;
+  time?: Timestamp<number>;
   status: Status;
-  user: User;
-  listing: CardListing;
+  user?: User;
+  listing?: CardListing;
+  imageURL?: string;
+  pokeName?: string;
 
 }

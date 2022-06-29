@@ -33,7 +33,7 @@ export class PokemonService {
     return this.http.get(`https://api.pokemontcg.io/v2/cards?q=name:${name}* rarity:${this.determineRarity(rarity)}`, {'headers': this.header})
   }
 
-  getCardById(id: string): Observable<any>{
+  getCardById(id?: string): Observable<any>{
     return this.http.get(`https://api.pokemontcg.io/v2/cards?q=id:${id}`, {'headers': this.header});
   }
   

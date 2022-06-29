@@ -8,6 +8,12 @@
     border: 3px solid black;
 }
 
+.loginLink:hover{
+  text-decoration: underline #F4D35E;
+}
+.disable{
+  text-decoration: none;
+}
 * {
   --Space-Cadet: #2F3061;
   --Yellow-Crayola: #F4D35E;

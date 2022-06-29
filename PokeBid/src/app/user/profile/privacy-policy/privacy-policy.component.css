@@ -1,0 +1,28 @@
+mat-dialog-content{
+    width: 2000px;
+    height: 3000px;
+    background-color: #343434;
+    color: white
+}
+
+ /***Scroll Bar***/
+
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    border: 1px solid  #F4D35E;
+    border-radius: 15px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background:  #F4D35E;  
+    border-radius: 15px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background:  #c7a630;  
+    }
