@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, AuthState } from '@auth0/auth0-angular';
 import {HttpClient } from '@angular/common/http';
-import {  } from 'jwt-decode';
 
 @Component({
   selector: 'app-auth',

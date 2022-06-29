@@ -21,6 +21,8 @@ import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
 import { LiveAuctionComponent } from './sale/make-sale/live-auction/live-auction.component';
 import { DescriptionComponent } from './sale/make-sale/description/description.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateAccountComponent } from './user/create-account/create-account.component';
+import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PinnedComponent,
     MakeSaleComponent,
     LiveAuctionComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    CreateAccountComponent,
+    ConfirmUserComponent,
   ],
   entryComponents: [CreateListingComponent],
   imports: [
