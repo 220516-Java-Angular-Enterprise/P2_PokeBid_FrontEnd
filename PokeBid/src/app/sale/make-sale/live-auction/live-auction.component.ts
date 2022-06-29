@@ -20,7 +20,7 @@ export class LiveAuctionComponent implements OnInit {
 
   constructor(private listingService: CardListingService,private notificationService: NotificationsService, public currRoute: ActivatedRoute, public auth: AuthService, public userService: UserService, private router: Router) { }
 
-currentListing: CardListing = {
+  currentListing: CardListing = {
   card_id: '',
   condition:{
     condition_id: '',
@@ -36,14 +36,14 @@ currentListing: CardListing = {
 }
   currentBid: any = undefined;
   id: string = '';
-isLoggedIn = false;
-user: User = {
+  isLoggedIn = false;
+  user: User = {
   id: '',
   username: '',
   password: '',
   address: '',
 };
-email?: string = '';
+  email?: string = '';
   
 
 

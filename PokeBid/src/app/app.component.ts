@@ -17,7 +17,12 @@ export class AppComponent {
 
   isLoggedIn: boolean = false;
   email?:string = '';
-  user: User = User
+  user: User = {
+  id: '',
+  username: '',
+  password: '',
+  address: '',
+};
 
   async ngOnInit(){
   this.auth.isAuthenticated$.subscribe((data:boolean) => { //Checks if user is logged in.
