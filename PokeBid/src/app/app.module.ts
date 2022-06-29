@@ -48,7 +48,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    AuthModule.forRoot({
+      ...environment.auth,
+    }),
 
   ],
   providers: [],

@@ -8,7 +8,7 @@
   </div>
 </li>
 
-  <li class="dropdown-item item">
+  <li class="dropdown-item item" *ngFor="let notification of fullNotifications">
     <!-- Notification Template -->
     <div class="d-flex justify-content-between">
     <!-- Left -->
@@ -16,10 +16,10 @@
     <!-- Middle -->
     <div class="d-inline-flex flex-fill row">
     <div class="d-flex justify-content-center">
-      <p class="h2 item-title">Notifcation Title</p>
-    </div>
+      <button class="btn btn-success mb-2"><a class="btn saleButton" (click)="goToListing(notification.cardListing.id)"><p class="h2 item-title">{{notification.cardListing.card_name}}</p></a></button>
+    </div> 
         <div class="d-flex mb-2 item-message">
-          <p class="h3">Notification Message</p>
+          <p class="h3">{{notification.message}}</p>
         </div>
     </div>
     <!-- Close Button -->
