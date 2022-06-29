@@ -6,6 +6,7 @@ import { PinnedService } from 'src/app/services/pinned.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pinned',
@@ -14,7 +15,7 @@ import { User } from 'src/app/models/users';
 })
 export class PinnedComponent implements OnInit {
 
-  constructor(private pinnedService: PinnedService, private http:HttpClient, private pokemon: PokemonService, private auth: AuthService, private userService: UserService) { }
+  constructor(private pinnedService: PinnedService, private http:HttpClient, private pokemon: PokemonService, private auth: AuthService, private userService: UserService, private router: Router) { }
 
   
 fullPinCards: Pinned[] = [];
@@ -35,13 +36,20 @@ email?: string = '';
       this.user = data;
         this.pinnedService.getPinnedByUserId(this.user.id).subscribe(notifs=>{
           this.fullPinCards = notifs;
+            this.fullPinCards.forEach(pinned => {
+              this.pokemon.getCardById(pinned.cardListing.card_id).subscribe(data=> {
+              pinned.cardListing.card_name = data.data[0].name
+        })
+      })
     })
     })
   })
 
+}
 
-
-
+goToListing(id: any){
+  this.router.navigateByUrl(`make-sale/${id}`)
+  console.log(id);
 }
 
 }
