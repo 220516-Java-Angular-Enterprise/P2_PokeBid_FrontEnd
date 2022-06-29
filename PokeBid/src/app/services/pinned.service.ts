@@ -24,7 +24,7 @@ export class PinnedService {
 
   
   
-  getPinned(id: string): Observable<any[]>{
-    return this.http.get<any[]>(this.apiUrl + id);
+  getPinnedByUserId(id: string): Observable<Pinned>{
+    return this.http.get<Pinned>(this.apiUrl + id);
   }
 }

@@ -21,39 +21,24 @@ export class NotificationComponent implements OnInit {
 
   fullNotifications: Notification[] = [];
   isLoggedIn: boolean = false;
-  email?: string = '';
+  email: string = '';
   user: User = {
     id: '',
     username: '',
     password: '',
     address: '',
   }; 
-
-  async ngOnInit() {
-  await this.auth.isAuthenticated$.subscribe(data =>{
-    this.isLoggedIn = data;
+  ngOnInit(): void {
+  this.auth.user$.subscribe((u:any)=>{
+    this.email = u.email;
+    this.userService.getUsersByEmail(this.email).subscribe(data=>{ 
+      this.user = data;
+        this.notificationsService.getNotificationsByUserId(this.user.id).subscribe(notifs=>{
+          this.fullNotifications = notifs;
+    })
+    })
   })
 
-  if(this.isLoggedIn){
-  await this.auth.user$.subscribe(u=>{
-      this.email = u?.email;
-      this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
-        this.user = data;
-        console.log(this.user);
-    })
-    })
-  }
-  await this.notificationsService.getNotifications(this.user.id).toPromise().then((data:any) => {
-    this.fullNotifications = data;
-    console.log(this.fullNotifications)
-    this.fullNotifications.forEach(notification => {
-      this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
-        notification.cardListing.card_name = data.data[0].name
-        console.log(notification);
-      })
-    })
-  })
-  
   }
 
   goToListing(id: any){
@@ -63,3 +48,4 @@ export class NotificationComponent implements OnInit {
   
 
 }
+
