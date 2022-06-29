@@ -8,8 +8,10 @@
     padding: 30px;
     background-color: #343434;
 }
-.img, .descriptionContainer{
+ .descriptionContainer{
     background-color: #343434;
+    border-radius: 5rem;
+    padding: 30px;
 }
 
 .name{
@@ -50,5 +52,4 @@ textarea{
   font-size: 1.5rem;
   background-color:#2F3061;
   color: snow;
-
 }

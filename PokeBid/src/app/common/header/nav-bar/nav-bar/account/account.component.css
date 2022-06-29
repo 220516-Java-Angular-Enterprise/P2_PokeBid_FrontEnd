@@ -1,0 +1,39 @@
+*{
+    --Space-Cadet: #2F3061;
+    --Yellow-Crayola: #F4D35E;
+    --Sweet-Brown: #A43939;
+    --Jet:#343434;
+    --Snow: #FFFBFF;
+    }
+    
+    .menu {
+    background-color: #343434;
+    }
+    
+    
+    div {
+      font-family: 'Karla', sans-serif;
+    
+    }
+    .title {
+      color: #F4D35E;
+      font-family: 'Righteous', cursive;
+    }
+    
+    .exit{
+      color: #A43939;
+      font-size: 2rem;
+    }
+    .item-title{
+      color: #F4D35E;
+    }
+    button:hover{
+      background-color: #2F3061;
+    }
+    .profileLink{
+      text-decoration: none;
+      color: #F4D35E;
+    }
+    .profileLink:hover{
+      text-decoration: underline;
+    }

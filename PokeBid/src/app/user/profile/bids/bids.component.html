@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Bid History</h2>
+
+<mat-dialog-content class="container">
+    <table>
+        <thead>
+            <td>Id</td>
+            <td>Status</td>
+            <td>Name</td>
+            <td>Image</td>
+        </thead>
+        <tr *ngFor="let hist of history">
+            <td>{{hist.id}}</td>
+            <td>{{hist.status.status}}</td>
+            <td>{{hist.pokeName}}</td>
+            <td><a href={{hist.imageURL}} target="_blank">> More Details</a></td>
+        </tr>
+    </table>
+
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+
+</mat-dialog-content>
+

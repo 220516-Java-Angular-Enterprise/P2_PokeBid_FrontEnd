@@ -1,3 +1,4 @@
+import { ListingStatusRequest } from './../models/dtos/listingStatusRequest';
 import { BidRequest } from './../models/dtos/bidRequerst';
 import { CardListingRequest } from '../models/dtos/cardListingRequest';
 import { CardListing } from './../models/cardListing';
@@ -31,5 +32,9 @@ export class CardListingService {
 
   updateHighestBidder(request: BidRequest){
     return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateBidder", request))
+  }
+
+  updateStatus(request: ListingStatusRequest){
+    return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateStatus", request))
   }
 }
