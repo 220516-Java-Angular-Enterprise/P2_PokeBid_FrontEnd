@@ -21,24 +21,25 @@ export class AppComponent {
   user: User = User
 
   async ngOnInit(){
-  await this.auth.isAuthenticated$.subscribe((data:boolean) => {
+  this.auth.isAuthenticated$.subscribe((data:boolean) => {
     this.isLoggedIn = data;
+    if(this.isLoggedIn){
+    this.auth.user$.subscribe(u=>{
+    this.email = u?.email;
+    
+    this.userservice.getUsersByEmail(this.email).toPromise().then((data:any)=>{
+      this.user = data;
+      console.log(this.user);
+    if(this.user == null){
+      this.goToCreateAccount(this.id);
+    } else {
+      this.router.navigateByUrl('');
+    }
   })
-  if(this.isLoggedIn){
-  await this.auth.user$.subscribe(u=>{
-      this.email = u?.email;
-      
-      this.userservice.getUsersByEmail(this.email).toPromise().then((data:any)=>{
-        this.user = data;
-        console.log(this.user);
-      if(this.user == null){
-        this.goToCreateAccount(this.id);
-      } else {
-        this.router.navigateByUrl('');
-      }
-    })
-    })
+  })
   }
+
+  })
 
 
 
