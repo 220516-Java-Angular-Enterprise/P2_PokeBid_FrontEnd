@@ -40,6 +40,7 @@ export class NotificationComponent implements OnInit {
             this.fullNotifications.forEach(notification => {
               this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
               notification.cardListing.card_name = data.data[0].name
+
         })
       })
     })
@@ -48,11 +49,33 @@ export class NotificationComponent implements OnInit {
 
   }
 
+  getNotifications() {
+    this.notificationsService.getNotifications().toPromise().then((data:any) => {
+      this.fullNotifications = data;
+      console.log(this.fullNotifications)
+
+      this.fullNotifications.forEach(notification => {
+        this.pokemon.getCardById(notification.cardListing.card_id).subscribe(data=> {
+          notification.cardListing.card_name = data.data[0].name
+          console.log(notification);
+        })
+      })
+    })
+  }
+
   goToListing(id: any){
     this.router.navigateByUrl(`make-sale/${id}`)
     console.log(id);
   }
-  
+
+
+  deleteNotification(id: any){
+    this.notificationsService.deleteNotification(id);
+    this.getNotifications();
+    console.log("After Deleting It: " + this.fullNotifications)
+  }
+
+
 
 }
 
