@@ -2,7 +2,6 @@ import { Condition } from './../../../../models/condition';
 import { ConditionService } from './../../../../services/condition.service';
 import { CardListingService } from './../../../../services/card-listing.service';
 import { CardListingRequest } from 'src/app/models/dtos/cardListingRequest';
-
 import { CardListing } from 'src/app/models/cardListing';
 import { ICard } from './../../../../models/pokemon/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -10,7 +9,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
-
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/users';
 @Component({
   selector: 'app-create-listing',
   templateUrl: './create-listing.component.html',
@@ -20,7 +20,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 export class CreateListingComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService, private auth: AuthService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService, private auth: AuthService, private userService: UserService) { }
 
 cardList: ICard[] = [];
 rarities: string[] = [];
@@ -34,6 +34,13 @@ selectTime: Date = new Date();
 searchName: string = '';
 searchRarity: any = undefined;
 isLoggedIn = false;
+user: User = {
+  id: '',
+  username: '',
+  password: '',
+  address: '',
+};
+email?: string = '';
 
 async ngOnInit() {
 
@@ -53,7 +60,17 @@ async ngOnInit() {
   await this.auth.isAuthenticated$.subscribe(data =>{
     this.isLoggedIn = data;
   })
-  console.log(this.isLoggedIn);
+
+  if(this.isLoggedIn){
+  await this.auth.user$.subscribe(u=>{
+      this.email = u?.email;
+      this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
+        this.user = data;
+        console.log(this.user);
+    })
+    })
+  }
+
 }
 
 onKey(event: any){
@@ -122,7 +139,7 @@ onKeyPrice(event: any): number{
 
 addListing(): void{
 let listing: CardListingRequest = {
-  lister_id: "ec40ae5b-12ed-4fb1-8051-199bb2d6533f",
+  lister_id: this.user.id,
   card_id: this.selectedCardId,
   auction_bid: this.auction_bid,
   status_id: '1e207de7-49d2-4963-8c0d-55095be5bda8',
