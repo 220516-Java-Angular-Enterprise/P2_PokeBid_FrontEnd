@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { NewUserRegistrationClass } from '../models/newuserregistrationclass';
+import { AutomatedNewUser } from '../models/automatednewuser';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -34,7 +35,14 @@ export class UserService {
     return this.http.get<User>(this.userURL + '/get-by-email/' + email)
   }
 
+
+  postNewAutomatedUser(newUserToRegister: AutomatedNewUser){
+    return this.http.post<any>(this.userRegisterURL, newUserToRegister);
+  }
+
   postNewUser(newUserToRegister: NewUserRegistrationClass):Observable<NewUserRegistrationClass>{
+    console.log("HERE IS THE NEXT PART");
+    console.log(newUserToRegister);
     return this.http.post<any>(this.userRegisterURL, newUserToRegister);
   }
   
