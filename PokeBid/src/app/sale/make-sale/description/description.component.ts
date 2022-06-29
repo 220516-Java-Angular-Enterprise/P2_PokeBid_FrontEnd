@@ -41,6 +41,7 @@ export class DescriptionComponent implements OnInit {
     }
   }
 
+
 currentPokemon: ICard[] = [];
 
 
@@ -70,8 +71,7 @@ connect() {
   const _this = this;
   this.stompClient.connect({}, function (frame: string) {
     console.log('Connected: ' + frame);
-    _this.stompClient.subscribe('/start/initial', function(hello: { body: string; }){
-      console.log(JSON.parse(hello.body));
+    _this.stompClient.subscribe('/start/initial', function( hello: {body: string}){
       _this.showMessage(JSON.parse(hello.body));
     });
   });
@@ -81,18 +81,19 @@ sendMessage() {
   this.stompClient.send(
     '/current/resume',
     {},
-    JSON.stringify(this.username + this.randInt + ": " + this.newmessage)
+    //this.obj
+    JSON.stringify(this.id + "~" + this.username + this.randInt + ": " + this.newmessage)
   );
   this.newmessage = "";
 }
 
 showMessage(message: string) {
-  this.greetings.push(message);
+    var split = message.split("~");
+    if (split[0] == this.id) { this.greetings.push(split[1]); } 
 }
 
 onKeydown(event: any){
   event.preventDefault();
 }
-
-
 }
+
