@@ -36,13 +36,14 @@
 
         <div class="flex-column d-flex align-items-start">
           <p class="card-text name align-self-center">{{pokemon.name}}</p>
-          <div class="rounded fill overflow-auto mt-2"
+          <div class="rounded fill overflow-auto mt-5 mb-5"
           style="height:40%; background-color:#514e4e;">
             <p class="card-text description">
             Description: {{currentListing.card_description}}
           </p></div>
 
           <div class="rounded flex-column d-flex justify-content-evenly" style="height:45%">
+            <div class=" card-text description"><p>Seller: {{currentListing.user?.username}}</p></div>
             <div class=" card-text description"><p>Condition: {{currentListing.condition.condition}}</p></div>
             <div class=" card-text description"><p>Rarity: {{pokemon.rarity}}</p></div>
             <div class=" card-text description"><a href={{pokemon.cardmarket.url}} target="_blank" style="text-decoration: underline; color: #FFFBFF;">Market Evaluation</a></div>
