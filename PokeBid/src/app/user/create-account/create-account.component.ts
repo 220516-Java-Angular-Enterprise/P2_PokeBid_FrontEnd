@@ -24,7 +24,7 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.currRouter.params.subscribe(p => {
-      this.currentEmail = p['currentEmail'];
+      this.currentEmail = p['email'];
       // this.listingService.getCardListingById(this.id).toPromise().then((data: any) =>{
       //   this.listing = data;
       // })
