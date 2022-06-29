@@ -18,7 +18,7 @@ export class CreateAccountComponent implements OnInit {
 
   myUser: User = new User;
 
-  currentEmail: String = "";
+  currentEmail: string = "";
   
   constructor(private userService: UserService, private currRouter: ActivatedRoute, private router: Router) { }
 
@@ -29,6 +29,7 @@ export class CreateAccountComponent implements OnInit {
       //   this.listing = data;
       // })
     });
+    console.log("THIS BEST BE THE EMAIL!");
     console.log(this.currentEmail);
   }
 
@@ -44,9 +45,9 @@ export class CreateAccountComponent implements OnInit {
     
     let newUserRegistration: NewUserRegistrationClass = {
       username: data.username,
-      password: data.password,
+      password: 'P@ssw0rd',
       address: data.address,
-      email: data.email
+      email: this.currentEmail
     };
     console.log("HERE IS THE REGISTRATION OBJ");
     console.log(newUserRegistration);
