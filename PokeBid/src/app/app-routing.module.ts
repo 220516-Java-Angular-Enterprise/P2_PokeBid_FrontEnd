@@ -14,6 +14,9 @@ const routes: Routes = [
     path: 'create-account/:id',
     component: CreateAccountComponent
   },
+  { path: 'account/:id',
+    component: ProfileComponent
+  },
 ]
 
 @NgModule({
