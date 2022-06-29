@@ -24,6 +24,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './user/create-account/create-account.component';
 import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', component: PinnedComponent}
+
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,10 +60,7 @@ import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
-    AuthModule.forRoot({
-      ...environment.auth,
-    }),
+    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,})
 
   ],
   providers: [],

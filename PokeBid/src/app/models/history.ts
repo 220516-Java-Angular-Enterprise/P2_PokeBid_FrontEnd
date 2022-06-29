@@ -1,5 +1,5 @@
 import { CardListing } from './cardListing';
-import { User } from './users';
+import { User } from './user';
 import { Status } from './status';
 import { Timestamp } from 'rxjs';
 

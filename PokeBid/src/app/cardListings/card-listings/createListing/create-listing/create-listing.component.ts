@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/users';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-create-listing',
   templateUrl: './create-listing.component.html',
