@@ -52,7 +52,11 @@ import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    AuthModule.forRoot({
+      ...environment.auth,
+    }),
 
   ],
   providers: [],
