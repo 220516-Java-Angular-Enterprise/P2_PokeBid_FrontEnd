@@ -25,6 +25,8 @@ export class AppComponent {
   await this.auth.isAuthenticated$.subscribe((data:boolean) => {
     this.isLoggedIn = data;
   })
+
+  if(this.isLoggedIn){
   await this.auth.user$.subscribe(u=>{
       this.email = u?.email;
       
@@ -38,6 +40,8 @@ export class AppComponent {
       }
     })
     })
+  }
+
     
 
 
