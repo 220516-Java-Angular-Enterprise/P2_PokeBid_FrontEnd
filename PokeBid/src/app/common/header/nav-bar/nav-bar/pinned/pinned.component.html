@@ -1,13 +1,12 @@
 <ul class="dropdown-menu dropdown-menu-end menu">
-  <li class="dropdown-item disabled">
-    <div class="d-inline-flex" style="margin-left: 200px;">
+  <li class="dropdown-item">
+    <div class="d-inline-flex" style="margin-left: 200px;" >
       <h2 class="fill title">Pinned Items</h2>
     </div>
-    <div class="d-inline-flex" style="margin-left: 200px; ">
-      <button type="button" class="btn exit">X</button>
+    <div class="d-inline-flex" style="margin-left: 200px;">
+      <button type="button" class="btn exit" ><i class="bi bi-arrow-clockwise" (click)="getPinned()"></i></button>
     </div>
   </li>
-
   <li class="dropdown-item item" *ngFor="let pinned of fullPinCards" [(ngModel)]="fullPinCards">
     <!-- Pinned Template -->
     <div class="d-flex justify-content-between">

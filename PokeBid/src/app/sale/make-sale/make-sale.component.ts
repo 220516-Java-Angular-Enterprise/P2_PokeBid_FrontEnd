@@ -24,7 +24,8 @@ export class MakeSaleComponent implements OnInit {
     condition: {
       condition: '',
       condition_id: '',
-    }
+    },
+    pinned: false
   }
 
   ngOnInit(): void {

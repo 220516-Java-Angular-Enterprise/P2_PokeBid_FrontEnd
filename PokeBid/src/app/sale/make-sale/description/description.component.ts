@@ -38,7 +38,8 @@ export class DescriptionComponent implements OnInit {
       username: '',
       password: '',
       address: '',
-    }
+    },
+    pinned: false
   }
 
 

@@ -34,7 +34,8 @@ export class LiveAuctionComponent implements OnInit {
     username: '',
     password: '',
     address: '',
-  }
+  },
+  pinned: false
 }
   currentBid: any = undefined;
   id: string = '';
@@ -85,6 +86,9 @@ export class LiveAuctionComponent implements OnInit {
     if(this.currentBid <= originalBid){
       alert("Current bid is lower than asking price!");
       return;
+    } else if(this.currentListing.auction_bidder.id === this.user.id){
+    alert("You're already the highest bidder!");
+    return;
     } else {
       this.currentListing.auction_bid = this.currentBid;
       if(confirm("Are you sure you want to place a new bid for $"+ this.currentBid+"?")){
