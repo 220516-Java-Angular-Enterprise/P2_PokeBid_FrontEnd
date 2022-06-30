@@ -1,3 +1,4 @@
+import { HistoryRequest } from './../models/dtos/historyRequest';
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import {firstValueFrom, Observable} from 'rxjs';
@@ -18,4 +19,9 @@ export class HistoryService {
   getHistoryByUserId(id: string): Observable<any>{
     return this.http.get<any>(this.historyURL + "/users/" + id)
   }
+
+  postHistory(request: HistoryRequest){
+    return firstValueFrom(this.http.post<any>(this.historyURL, request));
+  }
+  
 }

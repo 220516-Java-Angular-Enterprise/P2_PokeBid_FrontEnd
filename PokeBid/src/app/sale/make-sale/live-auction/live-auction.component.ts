@@ -1,3 +1,4 @@
+import { HistoryRequest } from './../../../models/dtos/historyRequest';
 import { ListingStatusRequest } from './../../../models/dtos/listingStatusRequest';
 import { NotificationRequest } from './../../../models/dtos/notificationRequest';
 import { BidRequest } from './../../../models/dtos/bidRequerst';
@@ -10,6 +11,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { HistoryService } from 'src/app/services/history.service';
 
 @Component({
   selector: 'app-live-auction',
@@ -18,7 +20,7 @@ import { Router } from '@angular/router';
 })
 export class LiveAuctionComponent implements OnInit {
 
-  constructor(private listingService: CardListingService,private notificationService: NotificationsService, public currRoute: ActivatedRoute, public auth: AuthService, public userService: UserService, private router: Router) { }
+  constructor(private listingService: CardListingService,private notificationService: NotificationsService, public currRoute: ActivatedRoute, public auth: AuthService, public userService: UserService, private router: Router, private historyService: HistoryService) { }
 
   currentListing: CardListing = {
   card_id: '',
@@ -133,6 +135,16 @@ export class LiveAuctionComponent implements OnInit {
       id: this.currentListing.id,
       status_id: "1c8439b2-85a6-4ab5-b77e-b8a2bf2998ff"
     }
+    let historySellerReq: HistoryRequest = {
+      status_id: "0ac1b2da-a838-4b68-84cf-28b68a9f3beb",
+      user_id: this.currentListing.user?.id,
+      listing_id: this.currentListing.id
+    }
+    let historyBuyerReq: HistoryRequest = {
+      status_id: "1c8439b2-85a6-4ab5-b77e-b8a2bf2998ff",
+      user_id: this.user.id,
+      listing_id: this.currentListing.id
+    }
     let notification1: NotificationRequest = {
       user_id: this.currentListing.auction_bidder.id,
       auction_id: this.currentListing.id,
@@ -151,6 +163,8 @@ export class LiveAuctionComponent implements OnInit {
     this.notificationService.postNotification(notification1)
     this.notificationService.postNotification(notification2)
     this.notificationService.postNotification(notification3)
+    this.historyService.postHistory(historyBuyerReq)
+    this.historyService.postHistory(historySellerReq)
     this.listingService.updateHighestBidder(bidReq)
     this.listingService.updateStatus(listStatusReq)
     alert("Successfully Purchased!")
