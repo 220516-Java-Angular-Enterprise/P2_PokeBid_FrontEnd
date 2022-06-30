@@ -1,7 +1,8 @@
+import { PinRequest } from './../models/dtos/pinRequest';
 import { Pinned } from './../models/pinned';
 import { Component, Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { CardListing } from '../models/cardListing';
 
 
@@ -20,11 +21,19 @@ export class PinnedService {
 
   constructor(private http:HttpClient) { }
 
-  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/pinnedCards/ec40ae5b-12ed-4fb1-8051-199bb2d6533f'; //Add user ID
+  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/pinned/';
 
   
   
-  getPinned(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiUrl);
+  getPinnedByUserId(id: string): Observable<any>{
+    return this.http.get(this.apiUrl + 'pinnedCards/' + id);
+  }
+
+  deletePinned(id: string){
+    return this.http.delete(this.apiUrl + 'delete/' + id).subscribe((data:any)=> { id = data; console.log(id); });;
+  }
+
+  postPin(request: PinRequest){
+    return firstValueFrom(this.http.post<any>(this.apiUrl, request));
   }
 }

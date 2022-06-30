@@ -4,24 +4,32 @@
   --Yellow-Crayola: #F4D35E;
   --Jet: #343434;
   --Sweet-Brown: #A43939;
+  --Snow: #FFFBFF
 }
 
 .card-text{
   font-weight: bolder;
+  color: snow
+}
+
+.card{
+  background-color: #2F3061;
 }
 
 .time-left{
   color: brown;
 }
 
+
 .bi-plus-circle{
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
-.bi-plus-circle:hover{
+.bi:hover{
   color: var(--Yellow-Crayola);
 }
+
 
 .bi-search{
   font-size: 1.8rem;
@@ -46,8 +54,18 @@
   margin-left: 25px;
 }
 
+.btn1{
+  width: 40px;
+  height: 40px;
+}
+
+.bi-arrow-clockwise{
+  font-size: 2rem;
+}
+
 .bi-star {
   font-size: 3rem;
+  color: black;
 }
 
 .star-btn:hover{
@@ -64,4 +82,12 @@
   font-family: 'Karla', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
+  color: snow;
+}
+
+.saleButton{
+  color: snow;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  
 }

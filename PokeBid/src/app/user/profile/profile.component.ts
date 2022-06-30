@@ -9,7 +9,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SalesComponent } from './sales/sales.component';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/users';
+import { User } from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -18,17 +19,20 @@ import { User } from 'src/app/models/users';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private userService: UserService) { }
+  constructor(private dialog: MatDialog, private userService: UserService, private currRoute: ActivatedRoute) { }
 
-  user: User = {id: "", username: "", password: "", adress: "", role: "", email: ""}
- 
+  user: User = {id: "", username: "", password: "", address: "", role: "", email: ""}
+  id: string = '';
 
   async ngOnInit(){
-    await this.userService.getUserById("ec40ae5b-12ed-4fb1-8051-199bb2d6533f").toPromise().then((data:any) => {
+    this.currRoute.params.subscribe(p =>{
+      this.id = p['id'];
+      this.userService.getUserById(this.id).then((data:any) => {
       this.user = data
       console.log(this.user)
     })
-    console.log(this.user)
+    })
+
   }
 
 

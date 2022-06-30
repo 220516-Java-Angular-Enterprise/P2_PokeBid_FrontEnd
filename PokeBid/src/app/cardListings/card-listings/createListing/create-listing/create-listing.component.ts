@@ -1,15 +1,16 @@
 import { Condition } from './../../../../models/condition';
 import { ConditionService } from './../../../../services/condition.service';
 import { CardListingService } from './../../../../services/card-listing.service';
-import { CardListingRequest } from 'src/app/models/cardListingRequest';
-
+import { CardListingRequest } from 'src/app/models/dtos/cardListingRequest';
 import { CardListing } from 'src/app/models/cardListing';
 import { ICard } from './../../../../models/pokemon/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-
+import { AuthService } from '@auth0/auth0-angular';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-create-listing',
   templateUrl: './create-listing.component.html',
@@ -19,7 +20,7 @@ import { Observable } from 'rxjs';
 
 export class CreateListingComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public pokemon:PokemonService, public listingService: CardListingService, public conditionService: ConditionService, private auth: AuthService, private userService: UserService) { }
 
 cardList: ICard[] = [];
 rarities: string[] = [];
@@ -32,8 +33,32 @@ card_description: string = '';
 selectTime: Date = new Date();
 searchName: string = '';
 searchRarity: any = undefined;
+buy_now: number = 0;
+isLoggedIn = false;
+user: User = {
+  id: '',
+  username: '',
+  password: '',
+  address: '',
+};
+email?: string = '';
 
-ngOnInit(): void {
+checkFields():boolean{
+  if(this.selectedCardId && this.selectedCardId){
+    if(this.auction_bid !== 0){
+      if(this.buy_now !== 0){
+        if(this.card_description !== ''){
+          if(this.condition_id !== ''){
+            return true;
+          }
+        }
+      }
+    }
+  }
+  return false
+}
+
+async ngOnInit() {
 
   this.pokemon.getRarities()
   .subscribe(
@@ -47,6 +72,19 @@ ngOnInit(): void {
       this.conditions = data
     }
   )
+
+  this.auth.isAuthenticated$.subscribe(data =>{
+    this.isLoggedIn = data;
+      if(this.isLoggedIn){
+    this.auth.user$.subscribe(u=>{
+      this.email = u?.email;
+      this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
+        this.user = data;
+    })
+    })
+  }
+  })
+
 }
 
 onKey(event: any){
@@ -64,8 +102,6 @@ searchPokemon(): ICard[] {
   .subscribe(
     data=>{
       this.cardList = data.data
-    console.log(this.searchRarity);
-    console.log(this.searchName);
     }
   )
   return this.cardList;
@@ -115,21 +151,28 @@ onKeyPrice(event: any): number{
   return this.auction_bid;
 }
 
+onKeyBuyNowPrice(event: any): number{
+  this.buy_now = event.target.value;
+  console.log(this.buy_now)
+  return this.buy_now;
+}
+
 addListing(): void{
 let listing: CardListingRequest = {
-  lister_id: "ec40ae5b-12ed-4fb1-8051-199bb2d6533f",
+  lister_id: this.user.id,
   card_id: this.selectedCardId,
   auction_bid: this.auction_bid,
   status_id: '1e207de7-49d2-4963-8c0d-55095be5bda8',
   condition_id: this.condition_id,
   description: this.card_description,
-  endTime: this.selectTime
+  endTime: this.selectTime,
+  buy_out_price: this.buy_now
 };
 
-//Call post request
 this.listingService.postCardListing(listing);
 }
-  
+
+
 
 
 

@@ -1,33 +1,39 @@
 <div class="column liveContainer" id="liveContainer">
     <div class="row">
-        <div class="col-sm-8 liveAuction">
-            <i class="bi bi-record-circle-fill liveIcon">Live Auction</i>
+        <div class="col-sm-8 liveAuction rounded">
+            <i class="bi bi-record-circle-fill liveIcon">Last Bidder</i>
             <!--Current Bidders-->
-            <div class="h-100 d-flex flex-row justify-content-between align-items-center currentBidders" id="currentBidder">
-                <h3>
-                    <span class="glyphicon glyphicon-user headerIcon"></span>
+            <div class="h-100 d-flex flex-row justify-content-between align-items-center currentBidders">
+                <h3 class="">
+                    <span class="glyphicon glyphicon-user headerIcon" *ngIf="currentListing.auction_bidder != null" [(ngModel)]="currentListing.auction_bidder.username")]>{{currentListing.auction_bidder.username}}</span>
                 </h3>
-                <h3 class="dollar">$</h3>
+                <h3 class="dollar" *ngIf="currentListing.auction_bidder !== undefined">{{currentListing.auction_bid | currency}}</h3>
             </div>
         </div>
-
         <!--Current highest bid-->
         <div class="col-sm-4 currentPrice">
             <p id="currentPrice">Current Bid Price</p>
             <br>
-            <p class="price">$</p>
+            <p class="price">${{currentListing.auction_bid}}</p>
 
             <!--Bid price selection-->
             <div class="h-100 d-flex flex-row justify-content-between align-items-center bidPrice">
-                <button id="bidTen" onclick="changeBidPrice(this.id)">$10</button>
-                <button id="bidTwenty" onclick="changeBidPrice(this.id)">$20</button>
-                <button id="bidThirty" onclick="changeBidPrice(this.id)">$30</button>
-                <input placeholder="Custom" id="custom">
-                <input id="bidCustom" onclick="changeBidPrice(this.id)" type="submit" value="Submit">
+                <button id="bidTen" (click)="changeBidPrice($event
+                .target)" value="10">+ $10</button>
+                <button id="bidTwenty" (click)="changeBidPrice($event
+                .target)" value="20"> + $20</button>
+                <button id="bidThirty"(click)="changeBidPrice($event
+                .target)" value="30">+ $30</button>
+                <input type="number" placeholder="Custom Value" id="custom" (keyup)="changeCustomBidPrice($event)">
+              <button id="placeBid" (click)="submitBid($event.target)">
+                <p>Place Bid For: {{currentBid | currency}}</p>
+              </button>
             </div>
-
-            <button id="placeBid">Place Bid For: </button>
-
         </div>
+          <div class="">
+            <button class="buy-btn" id="placeBid" (click)="buyNow()"><p>Buy Now For: {{currentListing.buy_out_price | currency}} </p></button>
+          </div>
     </div>
+
 </div>
+

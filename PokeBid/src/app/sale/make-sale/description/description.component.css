@@ -39,3 +39,17 @@
     border-radius: 5rem;
     padding: 30px;
 }
+
+.msg{
+  background-color: #af8686;
+}
+
+textarea{
+  resize: none;
+}
+
+.sendBtn{
+  font-size: 1.5rem;
+  background-color:#2F3061;
+  color: snow;
+}

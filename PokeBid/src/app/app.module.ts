@@ -29,6 +29,16 @@ import { PrivacyPolicyComponent } from './user/profile/privacy-policy/privacy-po
 import { ChangePasswordComponent } from './user/profile/change-password/change-password.component';
 import { ChangeEmailComponent } from './user/profile/change-email/change-email.component';
 import { FavoritesComponent } from './user/profile/favorites/favorites.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateAccountComponent } from './user/create-account/create-account.component';
+import { ConfirmUserComponent } from './user/confirm-user/confirm-user.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', component: PinnedComponent}
+
+]
 
 @NgModule({
   declarations: [
@@ -51,7 +61,9 @@ import { FavoritesComponent } from './user/profile/favorites/favorites.component
     PrivacyPolicyComponent,
     ChangePasswordComponent,
     ChangeEmailComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    CreateAccountComponent,
+    ConfirmUserComponent,
   ],
   entryComponents: [CreateListingComponent],
   imports: [
@@ -64,6 +76,9 @@ import { FavoritesComponent } from './user/profile/favorites/favorites.component
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,})
 
   ],
   providers: [],

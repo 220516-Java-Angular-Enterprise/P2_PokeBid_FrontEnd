@@ -1,0 +1,98 @@
+/*
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+
+
+*{
+--Space-Cadet: #2F3061;
+--Yellow-Crayola: #F4D35E;
+ --Sweet-Brown: #A43939;
+--Jet: #343434;
+--Snow: #FFFBFF
+}
+
+font-family: 'Josefin Sans', sans-serif; 'Karla', sans-serif; 'Righteous', cursive;
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:ital,wght@0,200;0,400;1,200&family=Righteous&display=swap');
+:root{
+  --Space-Cadet: #2F3061;
+  --Yellow-Crayola: #F4D35E;
+  --Jet: #343434;
+  --Sweet-Brown: #A43939;
+  --Snow: #FFFBFF
+}
+
+@font-face {font-family: "Pokemon"; src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot"); 
+src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); }
+
+.card-text .form-label{
+  font-weight: bolder;
+  color: snow
+}
+
+.card{
+  background-color: #2F3061;
+}
+
+.card-body{
+    color: #F4D35E;
+    font-family: 'Josefin Sans';
+}
+
+.bi-plus-circle{
+  color: black;
+  font-size: 2rem;
+}
+
+.bi:hover{
+  color: var(--Yellow-Crayola);
+}
+
+
+.bi-search{
+  font-size: 1.8rem;
+}
+
+.card-search{
+  font-size: 2rem;
+  font-family:'Josefin Sans',
+    sans-serif;;
+}
+
+.btn1{
+  width: 40px;
+  height: 40px;
+}
+
+.bi-arrow-clockwise{
+  font-size: 2rem;
+}
+
+.bi-star {
+  font-size: 3rem;
+  color: black;
+}
+
+.star-btn:hover{
+  color: red;
+  border: none;
+}
+
+.card-text{
+  font-family: 'Josefin Sans',
+    sans-serif;
+}
+
+.card-input{
+  font-family: 'Karla', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: snow;
+}
+
+.saleButton{
+  color: snow;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  
+}

@@ -8,7 +8,7 @@
   </div>
 </li>
 
-  <li class="dropdown-item item">
+  <li class="dropdown-item item" *ngFor="let notification of fullNotifications" [(ngModel)]="fullNotifications">
     <!-- Notification Template -->
     <div class="d-flex justify-content-between">
     <!-- Left -->
@@ -16,16 +16,36 @@
     <!-- Middle -->
     <div class="d-inline-flex flex-fill row">
     <div class="d-flex justify-content-center">
-      <p class="h2 item-title">Notifcation Title</p>
-    </div>
+    <a  href="#" routerLink="make-sale/{{notification.cardListing.id}}" style="text-decoration: none;">
+      <p class="h2 item-title">{{notification.cardListing.card_name}}</p>
+    </a>
+    </div> 
         <div class="d-flex mb-2 item-message">
-          <p class="h3">Notification Message</p>
+          <p class="h3">{{notification.message}}</p>
         </div>
     </div>
     <!-- Close Button -->
     <div class="d-inline-flex">
-        <button type="button" class="btn btn-danger" style="margin-left:7px;">X</button>
+        <button type="button" class="btn btn-danger" style="margin-left:7px;" (click)="deleteNotification(notification.id); getNotifications();">X</button>
     </div>
     </div>
     </li>
+
+    <li class="dropdown-item item" *ngIf="fullNotifications.length == 0">
+      <!-- Notification Template -->
+      <div class="d-flex justify-content-between">
+        <!-- Left -->
+    
+        <!-- Middle -->
+        <div class="d-inline-flex flex-fill row">
+          <div class="d-flex justify-content-center">
+                <p class="h2 item-title">\(^-^)/</p>
+          </div>
+          <div class="d-flex mb-2 item-message">
+            <p class="h3">You have no notifications right now!</p>
+          </div>
+        </div>
+      </div>
+    </li>
+    
 </ul>
