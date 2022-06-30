@@ -26,8 +26,8 @@ export class UserService {
     return this.http.get<User[]>(this.userURL);
   }
 
-  getUserById(id: string): Promise<User>{
-    return firstValueFrom(this.http.get<User>(this.userURL + "/" + id));
+  getUserById(id: string): Promise<User[]>{
+    return firstValueFrom(this.http.get<User[]>(this.userURL + "/" + id));
   }
 
   getUsersByEmail(email?: string): Observable<User>{

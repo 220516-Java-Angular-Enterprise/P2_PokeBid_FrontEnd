@@ -66,7 +66,7 @@ setConnected(connected: boolean) {
 }
 
 connect() {
-  const socket = new SockJS('http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/testchat/');
+  const socket = new SockJS('wss://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/testchat/');
   this.stompClient = Stomp.over(socket);
   const _this = this;
   this.stompClient.connect({}, function (frame: string) {

@@ -6,7 +6,8 @@ import { NgModule } from '@angular/core';
 import { DescriptionComponent } from './sale/make-sale/description/description.component';
 import { AccountComponent } from './common/header/nav-bar/nav-bar/account/account.component';
 import { ProfileComponent } from './user/profile/profile.component';
-const routes: Routes = [
+
+const routes: Routes = [ {
     path: 'make-sale/:id',
     component: MakeSaleComponent
   },

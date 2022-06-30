@@ -61,7 +61,7 @@ const appRoutes: Routes = [
     PrivacyPolicyComponent,
     ChangePasswordComponent,
     ChangeEmailComponent,
-    FavoritesComponent
+    FavoritesComponent,
     CreateAccountComponent,
     ConfirmUserComponent,
   ],
