@@ -28,13 +28,12 @@ export class MakeSaleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.currRouter.params.subscribe(p => {
-    //   this.id = p['id'];
-    //   this.listingService.getCardListingById(this.id).toPromise().then((data: any) =>{
-    //     this.listing = data;
-    //   })
-    // })
-    // console.log(this.listing)
+    this.currRouter.params.subscribe(p => {
+      this.id = p['id'];
+      this.listingService.getCardListingById(this.id).toPromise().then((data: any) =>{
+        this.listing = data;
+      })
+    })
   }
 
 }

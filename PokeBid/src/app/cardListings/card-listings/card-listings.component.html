@@ -7,10 +7,11 @@
       <input type="text" class="form-control card-search rounded" placeholder="Search Card Name" aria-label="card-name"
         aria-describedby="button-addon2" (keyup)="onKeySearch($event)">
       <div class="input-group-append">
-        <button (click)="filterSearch()" class="btn btn-warning search-btn" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+        <button (click)="filterSearch()" class="btn1 btn btn-warning search-btn" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+        <button (click)="refreshListing()" class="btn1 btn btn-info search-btn" type="button" id="button-addon2"><i class="bi bi-arrow-clockwise"></i></button>
+        <button (click)="openCreateListingDialog()" class="btn1 btn btn-success search-btn" type="button" id="button-addon2"><i class="bi bi-plus-circle"></i></button>
       </div>
     </div>
-    <button mat-button class="add-btn btn btn-success search-btn" (click)='openCreateListingDialog()'><i class="bi bi-plus-circle"></i></button>
     </div>
 
   <!-- Listings -->

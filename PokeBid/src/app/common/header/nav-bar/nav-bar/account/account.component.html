@@ -8,25 +8,31 @@
       </div>
     </li>
     
-      <li class="dropdown-item item">
+      <li class="dropdown-item item" *ngIf="isLoggedIn">
         <!-- Notification Template -->
         <div class="d-flex justify-content-between">
-        <!-- Left -->
-    
-        <!-- Middle -->
         <div class="d-inline-flex flex-fill row">
-            <button class="dropdown-item">
+            <button class="dropdown-item" (click)="goToProfile()">
                 <div class="d-flex justify-content-center">
-                <p class="h2 item-title"><a routerLink="/profile" class="profileLink">Profile</a></p>
+                <p class="h2 item-title"><a class="profileLink" style="text-decoration: none;">Profile</a></p>
                 </div>
             </button>
-            <!--login/sign up-->
-            <app-auth></app-auth>
-        </div>
-        <!-- Close Button -->
-        <div class="d-inline-flex" >
-            <button type="button" class="btn btn-danger" style="margin-left:7px;">X</button>
         </div>
         </div>
+
         </li>
+          <li class="dropdown-item item">
+            <!-- Notification Template -->
+            <div class="d-flex justify-content-between">
+              <div class="d-inline-flex flex-fill row">
+                <button class="dropdown-item">
+                  <div class="d-flex justify-content-center">
+                    <app-auth></app-auth>
+                  </div>
+                </button>
+                <!--login/sign up-->
+
+              </div>
+            </div>
+          </li>
     </ul>

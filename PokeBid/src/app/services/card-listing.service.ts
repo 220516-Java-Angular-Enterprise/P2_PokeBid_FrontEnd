@@ -1,3 +1,4 @@
+import { ListingStatusRequest } from './../models/dtos/listingStatusRequest';
 import { BidRequest } from './../models/dtos/bidRequerst';
 import { CardListingRequest } from '../models/dtos/cardListingRequest';
 import { CardListing } from './../models/cardListing';
@@ -18,7 +19,7 @@ export class CardListingService {
   
   getAllCardListings(): Observable<any>{
     //Active Status 
-    return this.http.get(this.cardListingURL + '/' + 'status/' + '1e207de7-49d2-4963-8c0d-55095be5bda8');
+    return this.http.get(this.cardListingURL + '/' + 'updateStatusTime');
   }
 
   postCardListing(listing: CardListingRequest){
@@ -31,5 +32,9 @@ export class CardListingService {
 
   updateHighestBidder(request: BidRequest){
     return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateBidder", request))
+  }
+
+  updateStatus(request: ListingStatusRequest){
+    return firstValueFrom(this.http.put<any>(this.cardListingURL +"/updateStatus", request))
   }
 }
