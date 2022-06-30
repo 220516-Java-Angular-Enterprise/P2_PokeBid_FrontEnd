@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { HistoryService } from 'src/app/services/history.service';
 import { History } from 'src/app/models/history';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { User } from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-bids',
@@ -11,30 +15,40 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class BidsComponent implements OnInit {
 
-  constructor(private historyService: HistoryService, private pokemonService: PokemonService) { }
+  constructor(private historyService: HistoryService, private pokemonService: PokemonService, public currRoute: ActivatedRoute, public userService: UserService, public auth: AuthService) { }
 
   history: History[] = []
   card: ICard[] = []
+  user: User = {id: "", username: "", password: "", address: "", role: "", email: ""}
+  email?: string = '';
+  isLoggedIn: boolean = false;
+
 
   async ngOnInit() {
-    await this.historyService.getHistoryByUserId("ec40ae5b-12ed-4fb1-8051-199bb2d6533f").toPromise().then((data:any) => {
-      this.history = data
-      console.log(this.history)
-    })
-
-    await this.history.forEach(element => {
+      this.auth.isAuthenticated$.subscribe(log=>{
+      this.isLoggedIn = log;
+      if(this.isLoggedIn){
+      this.auth.user$.subscribe(u=>{
+      this.email = u?.email;
+      this.userService.getUsersByEmail(this.email).subscribe((data:any)=>{
+      this.user = data;
+      this.historyService.getHistoryByUserId(this.user.id).toPromise().then((hist:any) => {
+      this.history = hist;
+      this.history.forEach(element => {
       this.pokemonService.getCardById(element.listing?.card_id).toPromise().then((data: any) => {
         this.card = data.data
-        console.log(this.card)
-
         element.imageURL = this.card[0].images.small
         element.pokeName = this.card[0].name
-        console.log(this.history)
       });
     }); 
-    
-    
-    
-  }
+    })
+    })
+    })
+        }
+      })
+
+}
+
+
 
 }

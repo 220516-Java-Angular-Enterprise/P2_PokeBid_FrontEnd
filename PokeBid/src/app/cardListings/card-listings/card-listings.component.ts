@@ -1,4 +1,4 @@
-import { PinRequest } from './../../models/dtos/pinRequest';
+import { PinRequest } from 'src/app/models/dtos/pinRequest';
 import { ConfirmUserComponent } from './../../user/confirm-user/confirm-user.component';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { ICard } from './../../models/pokemon/pokemon';
