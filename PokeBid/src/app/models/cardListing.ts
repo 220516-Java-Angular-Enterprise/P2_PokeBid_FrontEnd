@@ -17,5 +17,5 @@ export interface CardListing{
   imgUrl?: string;
   card_name?: string;
   buy_out_price?: number;
-  pinned?: boolean;
+  pinned: boolean;
 }

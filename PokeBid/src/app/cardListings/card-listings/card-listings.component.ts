@@ -39,6 +39,7 @@ export class CardListingsComponent implements OnInit {
   
 
   cardListings: CardListing[] = [];
+  userCardListing: CardListing[] = [];
   pinned: Pinned[] = [];
   filteredListings: CardListing[] = [];
   pokemonRendered: ICard[] = [];  
@@ -53,45 +54,8 @@ export class CardListingsComponent implements OnInit {
 };
   email?: string = '';
 
-  async ngOnInit(){
-    //Sets log in
-    this.auth.isAuthenticated$.subscribe(data=>{
-    this.isLoggedIn = data;
-    if(this.isLoggedIn){
-      //Gets user from backend via email.
-      this.auth.user$.subscribe(u=>{
-      this.email = u?.email;
-      this.userService.getUsersByEmail(this.email).toPromise().then((data:any)=>{
-        this.user = data;
-    })
-    })
-    }
-  })
-  this.service.getAllCardListings().subscribe((data:any) =>{
-    //Gets and sets card listings on it.
-    this.cardListings = data;
-    //Gets pinned for users. 
-    this.pinnedService.getPinnedByUserId(this.user.id).subscribe((pin:any)=> {
-      this.pinned = pin; 
-      //Checks if item is pinned by user. 
-      this.cardListings.forEach(listing=>{
-        this.pinned.forEach(pin => {
-          if(listing.id === pin.cardListing.id){
-          //Sets pinned status true in card listing.
-            listing.pinned = true;
-          }
-        })
-      })
-    })
-    this.cardListings.forEach(listing => {
-      //Gets and sets pokemon image and name from Pokemon API
-      this.pokemon.getCardById(listing.card_id).subscribe(data => {
-        listing.imgUrl = data.data[0].images.small
-        listing.card_name = data.data[0].name
-      })
-    })
-  })
-
+  ngOnInit(){
+    this.refreshListing();
   }
   
   onKeySearch(event: any){
@@ -133,16 +97,77 @@ export class CardListingsComponent implements OnInit {
       listing.card_name = data.data[0].name
       })
     })
+      this.auth.isAuthenticated$.subscribe(data=>{
+    this.isLoggedIn = data;
+    if(this.isLoggedIn){
+      //Gets user from backend via email.
+      this.auth.user$.subscribe(u=>{
+      this.email = u?.email;
+      this.userService.getUsersByEmail(this.email).subscribe((data:any)=>{
+      this.user = data;
+    this.service.getAllCardListings().subscribe((data:any) =>{
+    //Gets and sets card listings on it.
+    this.cardListings = data;
+        this.cardListings.forEach(listing => {
+      //Gets and sets pokemon image and name from Pokemon API
+      this.pokemon.getCardById(listing.card_id).subscribe(data => {
+        listing.imgUrl = data.data[0].images.small
+        listing.card_name = data.data[0].name
+      })
+    })
+    //Gets pinned for users. 
+    this.pinnedService.getPinnedByUserId(this.user.id).subscribe((pin:any)=> {
+      this.pinned = pin; 
+      //Checks if item is pinned by user. 
+      if(this.pinned != null){
+      this.cardListings.forEach(listing=>{
+        this.pinned.forEach(pin => {
+          if(listing.id === pin.cardListing.id){
+          //Sets pinned status true in card listing.
+            listing.pinned = true;
+          }
+      })
+    })
+    }
+  })
+  })
+  })
+  })
+  } 
+  })
   })
   }
 
-  addPin(listing_id: string){
+  addPin(event:any){
+  console.log(event)
+  console.log(event.classList)
+  if(this.isLoggedIn){
+  if(event.classList[1] == "bi-star"){
+  event.classList.replace("bi-star", "bi-star-fill")
     let pinReq: PinRequest ={
-      listing_id: listing_id,
+      listing_id: event.id,
       user_id: this.user.id
-    }
+      }
     this.pinnedService.postPin(pinReq);
-    console.log("Pinned!")
+    }
+  }else {
+    this.openConfirmUser()
+  }
+  console.log(this.pinned)
+  }
+
+  deletePin(event: any){
+  console.log(event)
+  event.classList.replace("bi-star-fill", "bi-star")
+    this.pinnedService.getPinnedByUserId(this.user.id).subscribe(p=>{
+      this.pinned = p;
+      console.log(this.pinned)
+      this.pinned.forEach(element=>{
+      if(element.cardListing.id == event.id){
+        this.pinnedService.deletePinned(element.id)
+      }
+    })
+    })
   }
 
 }

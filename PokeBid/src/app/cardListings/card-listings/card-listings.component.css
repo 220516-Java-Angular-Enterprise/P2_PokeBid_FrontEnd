@@ -63,9 +63,18 @@
   font-size: 2rem;
 }
 
-.bi-star {
+/* .bi-star {
   font-size: 3rem;
   color: black;
+} */
+
+/* .bi-star-filled {
+  font-size: 10rem;
+  color: black;
+} */
+
+.star {
+  font-size: 3rem;
 }
 
 .star-btn:hover{

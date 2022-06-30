@@ -18,7 +18,8 @@
   <div class="border m-5 d-flex justify-content-center row" *ngIf="searchName===''"> 
     <!-- Card -->
     <div class="card shadow m-5 overflow-hidden" *ngFor="let listing of cardListings" style="width: 25rem;">
-    <button class="position-absolute star-btn btn align-self-end"><i class="bi bi-star"></i></button>
+    <i class="bi bi-star position-absolute align-self-end star" id={{listing.id}} *ngIf="!listing.pinned" (click)="addPin($event.target)"></i><i class="bi bi-star-fill position-absolute align-self-end star" id={{listing.id}} *ngIf="listing.pinned"
+      (click)="deletePin($event.target)"></i>
       <img class="card-img-top mt-2" [src]="listing.imgUrl" alt="card-img">
       <div class="card-body" style="margin: 0">
         <div class="d-inline-flex"><p class="card-text name me-4">Card Name:</p><p class="card-input">{{listing.card_name}}</p> </div>
@@ -36,7 +37,8 @@
   <div class="border m-5 d-flex justify-content-center row" *ngIf="searchName"> 
     <!-- Card -->
     <div class="card shadow m-5 overflow-hidden" *ngFor="let listing of filteredListings" style="width: 25rem;">
-      <button class="position-absolute star-btn btn align-self-end"><i class="bi bi-star"></i></button>
+    <i class="bi bi-star position-absolute align-self-end star" id={{listing.id}} *ngIf="!listing.pinned" (click)="addPin($event.target)"></i><i class="bi bi-star-fill position-absolute align-self-end star" id={{listing.id}} *ngIf="listing.pinned"
+      (click)="deletePin($event.target)"></i>
       <img class="card-img-top mt-2" [src]="listing.imgUrl" alt="card-img">
       <div class="card-body" style="margin: 0">
         <div class="d-inline-flex">
