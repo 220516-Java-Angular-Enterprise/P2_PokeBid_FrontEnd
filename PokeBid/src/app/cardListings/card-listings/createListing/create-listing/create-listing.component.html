@@ -12,7 +12,7 @@
         <!--Select rarity-->
           <mat-form-field appearance="fill" class="mx-2 searchField">
             <mat-label class="mat-label rarity">Rarity</mat-label>
-            <mat-select class="mat-form-input" (selectionChange)="onSelect($event.value)">
+            <mat-select class="mat-form-input" (selectionChange)="onSelect($event.value)" required>
                 <mat-option  id="option" [value]="rarity"  *ngFor="let rarity of rarities">
                 {{rarity}}
               </mat-option>    
@@ -38,7 +38,7 @@
 
     <!--Write description-->
     <div class="h-100 d-flex justify-content-center align-items-center">
-        <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField">
+        <mat-form-field appearance="outline" class="me-auto flex-fill descriptionField" required>
             <mat-label class="descriptionLabel">Description</mat-label>
             <textarea matInput class="description" style="resize: none;" (keyup)="onKeyDesc($event)"></textarea>
         </mat-form-field>
@@ -56,13 +56,13 @@
                 <span matPrefix class="dollarSign">$&nbsp;</span>
                 <span matSuffix class="trailingZeros">.00</span>
                 <mat-label class="startingPriceLabel">Buy Now Price</mat-label>
-                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyBuyNowPrice($event)">
+                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyBuyNowPrice($event)" required>
             </mat-form-field>
 
             <!--Select condition-->
             <mat-form-field appearance="standard" class="conditionField">
                 <mat-label class="conditionLabel">Condition</mat-label>
-                <mat-select class="conditionOption"(selectionChange)="selectCondition($event.value)">
+                <mat-select class="conditionOption"(selectionChange)="selectCondition($event.value)" required>
                 <mat-option *ngFor="let condition of conditions" value={{condition.condition}} >
                     {{condition.condition}}
                 </mat-option>
@@ -72,7 +72,7 @@
             <!-- Select Expiration Date -->
             <mat-form-field appearance="standard" class="conditionField">
               <mat-label class="conditionLabel">Auction Duration</mat-label>
-              <mat-select class="conditionOption" (selectionChange)="selectDate($event.value)">
+              <mat-select class="conditionOption" (selectionChange)="selectDate($event.value)" required>
                 <mat-option value="1" >
                     <p>1 Day</p>
                   </mat-option>
@@ -92,7 +92,7 @@
 </mat-dialog-content>
 <mat-dialog-actions class="container d-flex flex-row w-auto justify-content-between align-content-center">
   <div class="box">
-    <button mat-button mat-dialog-close mat-dialog-close="true" class="add" (click)="addListing()" >Add Listing</button>
+    <button mat-button mat-dialog-close mat-dialog-close="true" class="add" (click)="addListing()" *ngIf="checkFields()" >Add Listing</button>
   </div>
   <div class="box d-flex justify-content-center mt-2">
     <h1 class="selected-card">{{selectedCardName}}</h1>

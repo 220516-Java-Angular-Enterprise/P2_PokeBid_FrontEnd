@@ -55,7 +55,8 @@ export class AuthComponent implements OnInit {
 
   logIn(): void {
 this.auth.loginWithRedirect({
-      redirect_uri: 'https://pokebid-frontend.s3.us-east-2.amazonaws.com/index.html'
+      // redirect_uri: 'https://pokebid-frontend.s3.us-east-2.amazonaws.com/index.html'
+      redirect_uri: 'http://localhost:4200'
     });
     console.log("I THINK THIS IS THE LOG IN THINGY!");
     console.log(this.auth.getUser);

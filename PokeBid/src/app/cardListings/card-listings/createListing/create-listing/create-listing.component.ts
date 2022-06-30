@@ -43,6 +43,21 @@ user: User = {
 };
 email?: string = '';
 
+checkFields():boolean{
+  if(this.selectedCardId && this.selectedCardId){
+    if(this.auction_bid !== 0){
+      if(this.buy_now !== 0){
+        if(this.card_description !== ''){
+          if(this.condition_id !== ''){
+            return true;
+          }
+        }
+      }
+    }
+  }
+  return false
+}
+
 async ngOnInit() {
 
   this.pokemon.getRarities()
@@ -69,8 +84,6 @@ async ngOnInit() {
     })
   }
   })
-
-
 
 }
 
@@ -156,9 +169,6 @@ let listing: CardListingRequest = {
   buy_out_price: this.buy_now
 };
 
-
-console.log(listing);
-//Call post request
 this.listingService.postCardListing(listing);
 }
 

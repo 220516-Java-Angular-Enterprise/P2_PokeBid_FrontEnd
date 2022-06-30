@@ -41,8 +41,9 @@ export class CardListingsComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   async ngOnInit(){
-  await this.service.getAllCardListings().toPromise().then((data:any) =>{
+  this.service.getAllCardListings().subscribe((data:any) =>{
     this.cardListings = data;
+    console.log(this.cardListings)
     this.cardListings.forEach(listing => {
       this.pokemon.getCardById(listing.card_id).subscribe(data => {
         listing.imgUrl = data.data[0].images.small
