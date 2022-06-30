@@ -49,7 +49,7 @@
                 <span matPrefix class="dollarSign">$&nbsp;</span>
                 <span matSuffix class="trailingZeros">.00</span>
                 <mat-label class="startingPriceLabel">Bidding Price</mat-label>
-                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyPrice($event)">
+                <input matInput placeholder="Starting Price" class="startingPriceInput" type="number" (keyup)="onKeyPrice($event)" required>
             </mat-form-field>
 
             <mat-form-field appearance="standard" class="startingPriceField">

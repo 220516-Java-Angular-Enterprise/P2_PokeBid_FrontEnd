@@ -1,7 +1,8 @@
+import { PinRequest } from './../models/dtos/pinRequest';
 import { Pinned } from './../models/pinned';
 import { Component, Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { CardListing } from '../models/cardListing';
 
 
@@ -30,5 +31,9 @@ export class PinnedService {
 
   deletePinned(id: string){
     return this.http.delete(this.apiUrl + 'delete/' + id).subscribe((data:any)=> { id = data; console.log(id); });;
+  }
+
+  postPin(request: PinRequest){
+    return firstValueFrom(this.http.post<any>(this.apiUrl, request));
   }
 }

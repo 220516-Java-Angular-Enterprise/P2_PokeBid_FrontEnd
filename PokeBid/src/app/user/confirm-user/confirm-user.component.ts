@@ -18,7 +18,7 @@ export class ConfirmUserComponent implements OnInit {
   logIn(): void {
 this.auth.loginWithRedirect({
       // redirect_uri: 'https://pokebid-frontend.s3.us-east-2.amazonaws.com/index.html'
-      redirect_uri: 'http://localhost:4200'
+      // redirect_uri: 'http://localhost:4200'
     });
   }
 
