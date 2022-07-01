@@ -78,6 +78,7 @@ export class LiveAuctionComponent implements OnInit {
   }
 
   submitBid(target: any){
+    console.log(target)
     let originalBid: any = this.currentListing.auction_bid;
     if(this.currentListing.user?.id === this.user.id){
       alert("You cannot bid on your own auction!!");
@@ -86,9 +87,6 @@ export class LiveAuctionComponent implements OnInit {
     if(this.currentBid <= originalBid){
       alert("Current bid is lower than asking price!");
       return;
-    } else if(this.currentListing.auction_bidder.id === this.user.id){
-    alert("You're already the highest bidder!");
-    return;
     } else {
       this.currentListing.auction_bid = this.currentBid;
       if(confirm("Are you sure you want to place a new bid for $"+ this.currentBid+"?")){
