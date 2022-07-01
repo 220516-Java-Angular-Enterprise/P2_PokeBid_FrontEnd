@@ -147,11 +147,14 @@ export class LiveAuctionComponent implements OnInit {
       user_id: this.user.id,
       listing_id: this.currentListing.id
     }
+    if (this.currentListing.auction_bidder != null) {
     let notification1: NotificationRequest = {
       user_id: this.currentListing.auction_bidder.id,
       auction_id: this.currentListing.id,
       message: "Someone has bought the card you bidded on this auction."
     } 
+    this.notificationService.postNotification(notification1)
+  }
     let notification2: NotificationRequest = {
       user_id: this.currentListing.user?.id,
       auction_id: this.currentListing.id,
@@ -162,7 +165,6 @@ export class LiveAuctionComponent implements OnInit {
       auction_id: this.currentListing.id,
       message: "You have bought this card auction."
     }
-    this.notificationService.postNotification(notification1)
     this.notificationService.postNotification(notification2)
     this.notificationService.postNotification(notification3)
     this.historyService.postHistory(historyBuyerReq)
