@@ -25,4 +25,7 @@ export class ProfileService {
     this.fullLink = this.apiUrl + emailToCheck;
     return this.http.get<any[]>(this.fullLink);
   }
+
+  
 }
+

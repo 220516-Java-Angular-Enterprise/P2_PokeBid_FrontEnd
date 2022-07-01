@@ -37,7 +37,7 @@ export class PokemonService {
     return this.http.get(`https://api.pokemontcg.io/v2/cards?q=id:${id}`, {'headers': this.header});
   }
   
-private determineRarity(rarity:string): string{
+   private determineRarity(rarity:string): string{
     switch(rarity){
   case "Amazing Rare":
     rarity = "amazing";
@@ -108,3 +108,76 @@ private determineRarity(rarity:string): string{
     return rarity;
   }
 }
+
+//Testing function
+
+export function determineRarity(rarity: string): string{
+  switch(rarity){
+    case "Amazing Rare":
+      rarity = "amazing";
+      break;
+    case "Classic Collection":
+      rarity = "classic";
+      break;
+    case "Radiant Rare":
+      rarity = "radiant";
+      break;
+    case "Rare BREAK":
+      rarity = "break";
+      break;
+      case "Rare Holo":
+      rarity = "holo";
+      break;
+    case "Rare Holo EX":
+      rarity = "ex";
+      break;
+    case "Rare Holo GX":
+      rarity = "gx";
+      break;
+    case "Rare Holo LV.X":
+      rarity = "lv";
+      break;
+    case "Rare Holo Star":
+      rarity = "star";
+      break;
+      case "Rare Holo V":
+      rarity = "v";
+      break;
+      case "Rare ACE":
+      rarity = "ace";
+      break;
+    case "Rare Holo VMAX":
+      rarity = "vmax";
+      break;
+    case "Rare Holo VSTAR":
+      rarity = "vstar";
+      break;
+    case "Rare Prime":
+      rarity = "prime";
+      break;
+      case "Rare Prime Star":
+      rarity = "star";
+      break;
+    case "Rare Rainbow":
+      rarity = "rainbow";
+      break;
+    case "Rare Secret":
+      rarity = "secret";
+      break;
+    case "Rare Shining":
+      rarity = "shining";
+      break;
+      case "Rare Shiny":
+      rarity = "shiny";
+      break;
+    case "Rare Shiny GX":
+      rarity = "gx";
+      break;
+    case "Rare Ulta":
+      rarity = "ulta";
+      break;
+    default:
+      break;
+      }
+      return rarity;
+    }

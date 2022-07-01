@@ -1,6 +1,8 @@
+import { CardListing } from 'src/app/models/cardListing';
 import { TestBed } from '@angular/core/testing';
 
 import { CardListingService } from './card-listing.service';
+
 
 describe('CardListingService', () => {
   let service: CardListingService;
@@ -13,4 +15,7 @@ describe('CardListingService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  
+
 });

@@ -15,4 +15,5 @@ export class StatusService {
   getAllStatus(): Promise<Status[]>{
     return firstValueFrom(this.http.get<Status[]>(this.statusURL));
   }
+
 }

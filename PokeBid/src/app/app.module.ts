@@ -15,6 +15,7 @@ import { AuthComponent } from './user/auth/auth.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
+import { MatDialogContent } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationComponent } from './common/header/nav-bar/nav-bar/notification/notification.component';
 import { MakeSaleComponent } from './sale/make-sale/make-sale.component';
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,})
+    RouterModule.forRoot(appRoutes, {enableTracing: true, ...environment.auth,}),
+    MatDialogModule
 
   ],
   providers: [],

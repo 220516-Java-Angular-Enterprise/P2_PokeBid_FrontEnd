@@ -5,5 +5,4 @@ export interface Pinned{
   id: string;
   user: User;
   cardListing: CardListing;
-
 }
