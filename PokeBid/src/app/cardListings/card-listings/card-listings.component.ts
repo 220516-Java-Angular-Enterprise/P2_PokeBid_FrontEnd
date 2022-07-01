@@ -171,7 +171,6 @@ export class CardListingsComponent implements OnInit {
     })
     })
     }
-
   }
 
 }
