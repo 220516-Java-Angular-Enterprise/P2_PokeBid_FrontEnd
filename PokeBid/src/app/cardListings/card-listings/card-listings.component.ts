@@ -149,25 +149,29 @@ export class CardListingsComponent implements OnInit {
       user_id: this.user.id
       }
     this.pinnedService.postPin(pinReq);
+    } else if(event.classList[1] == "bi-star-fill"){
+      this.deletePin(event)
     }
   }else {
     this.openConfirmUser()
   }
-  console.log(this.pinned)
+
   }
 
   deletePin(event: any){
-  console.log(event)
-  event.classList.replace("bi-star-fill", "bi-star")
+    if(event.classList[1] == "bi-star-fill"){
+    event.classList.replace("bi-star-fill", "bi-star")
     this.pinnedService.getPinnedByUserId(this.user.id).subscribe(p=>{
       this.pinned = p;
       console.log(this.pinned)
       this.pinned.forEach(element=>{
       if(element.cardListing.id == event.id){
-        this.pinnedService.deletePinned(element.id)
+      this.pinnedService.deletePinned(element.id)
       }
     })
     })
+    }
+
   }
 
 }
