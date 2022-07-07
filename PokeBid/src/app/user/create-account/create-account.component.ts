@@ -25,12 +25,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {
     this.currRouter.params.subscribe(p => {
       this.currentEmail = p['email'];
-      // this.listingService.getCardListingById(this.id).toPromise().then((data: any) =>{
-      //   this.listing = data;
-      // })
     });
-    console.log("THIS BEST BE THE EMAIL!");
-    console.log(this.currentEmail);
   }
 
   onAutomatedNewUser(data: AutomatedNewUser){
@@ -39,10 +34,6 @@ export class CreateAccountComponent implements OnInit {
   }
 
   onSubmitNewUser(data: NewUserRegistrationClass): void {
-    
-    
-
-    
     let newUserRegistration: NewUserRegistrationClass = {
       username: data.username,
       password: 'P@ssw0rd',
@@ -53,30 +44,8 @@ export class CreateAccountComponent implements OnInit {
     console.log(newUserRegistration);
 
 
-    /*let notification1: NotificationRequest = {
-      user_id: this.currentListing.auction_bidder.id,
-      auction_id: this.currentListing.id,
-      message: "Someone has outbid you on this auction."
-    } */
-
-
     this.userService.postNewUser(newUserRegistration).subscribe( (newUser) => (console.log(newUser)) );
-
     this.router.navigateByUrl(`/`);
   }
 
 }
-
-/*
-User{
-  id: string;
-  username: string;
-  password: string;
-  address: string;
-  role?: string;
-  email?: string;
-  reviews?: Review[];
-  pinned?: Pinned[]; 
-  history?: History[];
-  listings?: CardListing[]; 
-*/

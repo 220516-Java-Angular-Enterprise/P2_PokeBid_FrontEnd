@@ -10,7 +10,7 @@ export class StatusService {
 
   constructor(private http:HttpClient) { }
 
-  statusURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/status";
+  statusURL = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/status";
   
   getAllStatus(): Promise<Status[]>{
     return firstValueFrom(this.http.get<Status[]>(this.statusURL));

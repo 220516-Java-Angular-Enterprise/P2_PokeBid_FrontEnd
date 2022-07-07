@@ -21,7 +21,7 @@ export class NotificationsService {
   constructor(private http:HttpClient) { }
 
 
-  private notificationUrl = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/notification/";
+  private notificationUrl = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/notification/";
 
   getNotificationsByUserId(id: string): Observable<any>{
     return this.http.get(this.notificationUrl + id);

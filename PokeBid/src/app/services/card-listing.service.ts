@@ -13,7 +13,7 @@ export class CardListingService {
 
   constructor(private http:HttpClient) { }
 
-  private cardListingURL  = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/cardListing";
+  private cardListingURL  = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/cardListing";
   
 
   

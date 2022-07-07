@@ -69,7 +69,6 @@ export class CardListingsComponent implements OnInit {
 
   }
   
-
   filterSearch(){
     this.filteredListings = [];
     this.cardListings.forEach(listing => {

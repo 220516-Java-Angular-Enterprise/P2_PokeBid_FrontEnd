@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
 })
 export class ProfileService {
 
-  apiUrl  = 'http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users/get-by-email/'; //Add user ID
+  apiUrl  = 'http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/users/get-by-email/'; //Add user ID
 
   fullLink: string = "";
 

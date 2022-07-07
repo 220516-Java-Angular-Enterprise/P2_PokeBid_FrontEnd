@@ -10,7 +10,7 @@ export class HistoryService {
 
   constructor(private http:HttpClient) { }
 
-  historyURL  = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/history";
+  historyURL  = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/history";
   
   getHistory(): Promise<History[]>{
     return firstValueFrom(this.http.get<History[]>(this.historyURL));

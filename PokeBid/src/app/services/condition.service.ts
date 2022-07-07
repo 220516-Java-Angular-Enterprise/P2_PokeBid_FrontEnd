@@ -10,7 +10,7 @@ export class ConditionService {
 
   constructor(private http:HttpClient) { }
 
-  conditionURL  = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/condition";
+  conditionURL  = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/condition";
   
   getAllConditions(): Observable<any>{
     return this.http.get(this.conditionURL);

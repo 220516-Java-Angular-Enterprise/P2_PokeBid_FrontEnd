@@ -20,8 +20,8 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
 
-  private userURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users"
-  private userRegisterURL = "http://pokebidv2-env.eba-6cei577i.us-east-2.elasticbeanstalk.com/pokebid/users/register"
+  private userURL = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/users"
+  private userRegisterURL = "http://pokebidbackend-env.eba-dbmd43p6.us-east-2.elasticbeanstalk.com/pokebid/users/register"
   
   getAllUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.userURL);
@@ -41,7 +41,6 @@ export class UserService {
   }
 
   postNewUser(newUserToRegister: NewUserRegistrationClass):Observable<NewUserRegistrationClass>{
-    console.log("HERE IS THE NEXT PART");
     console.log(newUserToRegister);
     return this.http.post<any>(this.userRegisterURL, newUserToRegister);
   }
